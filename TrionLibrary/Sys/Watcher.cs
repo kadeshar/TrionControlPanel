@@ -229,7 +229,8 @@ namespace TrionLibrary.Sys
                      myProcess.StartInfo.WorkingDirectory = WorkingDirectory;
                      if (Arguments != null)
                      {
-                         myProcess.StartInfo.Arguments = Arguments;
+                         //myProcess.StartInfo.Arguments = Arguments;
+                         myProcess.StartInfo.Arguments = "--console";
 
                      }
                      if (HideWindw == false)
