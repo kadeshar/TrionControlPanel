@@ -69,8 +69,13 @@ namespace TrionControlPanelDesktop.Data
                 User.UI.Form.WotLKLogonRunning ||
                 User.UI.Form.CataLogonRunning ||
                 User.UI.Form.MOPLogonRunning)
-            { return true; }
-            else { return false; }
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public static async Task LoadVersions()
         {
@@ -99,19 +104,19 @@ namespace TrionControlPanelDesktop.Data
                     var xmlContent = await httpClient.GetStringAsync(WebLink);
                     var previousXml = XDocument.Parse(xmlContent);
                     DownloadControl.DownlaodList = (from file in previousXml.Root!.Elements("File")
-                                         select new Lists.File
-                                         {
-                                             FileName = file.Element("FileName")!.Value,
-                                             FileFullName = file.Element("FileFullName")!.Value,
-                                             FileHash = file.Element("FileHash")!.Value
-                                         }).ToList();
+                                                    select new Lists.File
+                                                    {
+                                                        FileName = file.Element("FileName")!.Value,
+                                                        FileFullName = file.Element("FileFullName")!.Value,
+                                                        FileHash = file.Element("FileHash")!.Value
+                                                    }).ToList();
                     DownloadControl.StartDownload = startDownload;
                     return;
                 }
             }
             var progress = new Progress<string>(value => { });
             await Task.Run(async () => await DownloadControl.CompareAndExportChangesOnline(Directory, WebLink, progress, startDownload));
-            
+
         }
         private static int VersionCompare(string ver1, string ver2)
         {
@@ -566,10 +571,11 @@ namespace TrionControlPanelDesktop.Data
                 }
                 if (User.UI.Form.WotLKWorldStarted && User.UI.Form.WotLKWorldRunning)
                 {
+                    User.UI.Form.WotLKWorldStarted = false;
                     var processToRemove = User.System.WorldProcessesID.Single(r => r.Name == Setting.List.WotLKWorldName);
                     await Watcher.ApplicationStop(processToRemove.ID);
                     User.System.WorldProcessesID.Remove(processToRemove);
-                    User.UI.Form.WotLKWorldStarted = false;
+                    User.UI.Form.WotLKWorldRunning = false;
                 }
                 if (User.UI.Form.CataWorldStarted && User.UI.Form.CataWorldRunning)
                 {
@@ -612,10 +618,11 @@ namespace TrionControlPanelDesktop.Data
             }
             if (User.UI.Form.WotLKLogonStarted && User.UI.Form.WotLKLogonRunning)
             {
+                User.UI.Form.WotLKLogonStarted = false;
                 var processToRemove = User.System.LogonProcessesID.Single(r => r.Name == Setting.List.WotLKLogonName);
                 await Watcher.ApplicationStop(processToRemove.ID);
                 User.System.LogonProcessesID.Remove(processToRemove);
-                User.UI.Form.WotLKLogonStarted = false;
+                User.UI.Form.WotLKLogonRunning = false;
             }
             if (User.UI.Form.CataLogonStarted && User.UI.Form.CataLogonRunning)
             {

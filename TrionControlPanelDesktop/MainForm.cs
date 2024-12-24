@@ -231,9 +231,13 @@ namespace TrionControlPanelDesktop
         private void BTNStartLogin_Click(object sender, EventArgs e)
         {
             if (!Main.ServerStatusLogon())
-            { Task.Run(async () => await Main.StartLogon()); }
+            { 
+                Task.Run(async () => await Main.StartLogon()); 
+            }
             else
-            { Task.Run(async () => await Main.StopLogon()); }
+            { 
+                Task.Run(async () => await Main.StopLogon()); 
+            }
         }
         private void BTNStartWorld_Click(object sender, EventArgs e)
         {
