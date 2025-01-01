@@ -103,7 +103,7 @@ namespace TrionControlPanelDesktop.Controls
                     Setting.List.SelectedCore == Enums.Cores.TrinityCoreClassic)
                 {
                     //`name`, `address`, `port`, `icon`, `flag`, `timezone`
-                    Access.SaveData(SQLQuery.SaveRealm(), new
+                    await Access.SaveData(SQLQuery.SaveRealm(), new
                     {
                         Name = TXTRealmName.Text,
                         Address = TXTRealmAddress.Text,
@@ -116,6 +116,7 @@ namespace TrionControlPanelDesktop.Controls
                         ID = TXTRealmID.Text
 
                     }, Connect.String(Setting.List.AuthDatabase));
+                    
                     await LoadRealmList();
                 }
                 if (Setting.List.SelectedCore == Enums.Cores.CMaNGOS ||
@@ -199,6 +200,7 @@ namespace TrionControlPanelDesktop.Controls
         private async void BTNSaveData_ClickAsync(object sender, EventArgs e)
         {
             await SaveRealmList();
+
         }
         private void TimerWacher_Tick(object sender, EventArgs e)
         {

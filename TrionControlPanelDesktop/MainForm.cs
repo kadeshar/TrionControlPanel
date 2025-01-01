@@ -97,6 +97,7 @@ namespace TrionControlPanelDesktop
         }
         private async void MainForm_LoadAsync(object sender, EventArgs e)
         {
+            Text = "Trion Control Panel - AzerothCore Single Player Repack";
             await Setting.Load();
             await Main.CheckForUpdate();
             User.UI.Form.StartUpLoading++;
