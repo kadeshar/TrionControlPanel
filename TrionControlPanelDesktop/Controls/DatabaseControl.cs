@@ -103,7 +103,7 @@ namespace TrionControlPanelDesktop.Controls
                     Setting.List.SelectedCore == Enums.Cores.TrinityCoreClassic)
                 {
                     //`name`, `address`, `port`, `icon`, `flag`, `timezone`
-                    await Access.SaveData(SQLQuery.SaveRealm(), new
+                    await Access.SaveDataVersion2(SQLQuery.SaveRealm(), new
                     {
                         Name = TXTRealmName.Text,
                         Address = TXTRealmAddress.Text,

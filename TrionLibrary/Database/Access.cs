@@ -118,8 +118,8 @@ namespace TrionLibrary.Database
             {
                 string previsuTableName = "Null";
                 string tableName = row[0].ToString();
-                    
-                
+
+
                 Infos.Message = $"Dumping data for table `{tableName}`";
 
                 using (var command = new MySqlCommand($"SELECT * FROM `{tableName}`;", connection))
@@ -150,7 +150,7 @@ namespace TrionLibrary.Database
                             string insertRemove = $"DELETE FROM `{tableName}`;";
                             writer.WriteLine(insertRemove);
                         }
-                        if(tableName != "updates")
+                        if (tableName != "updates")
                         {
                             string insertStatement = $"INSERT INTO `{tableName}` VALUES ({string.Join(", ", values)});";
                             writer.WriteLine(insertStatement);
@@ -299,6 +299,13 @@ namespace TrionLibrary.Database
             {
                 return Task.CompletedTask;
             }
+        }
+
+        public static async Task SaveDataVersion2<T>(string sql, T parameters, string connectionString)
+        {
+            using IDbConnection con = new MySqlConnection(connectionString);
+            con.Open();
+            await con.ExecuteAsync(sql, parameters);
         }
     }
 }
