@@ -226,7 +226,19 @@ namespace TrionControlPanelDesktop
             }
             else
             {
-                await Main.StopDatabase();
+                var stopDatabase = true;
+                if (User.System.WorldProcessesID.Count > 0 || User.System.LogonProcessesID.Count > 0)
+                {
+                    if (MetroMessageBox.Show(this, "World or Logon server is running. Turning off MySQL can corrupt database. Still do you want turn off MySQL?", "Question.", Setting.List.NotificationSound, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.No)
+                    {
+                        stopDatabase = false;
+                    }
+                }
+
+                if (stopDatabase)
+                {
+                    await Main.StopDatabase();
+                }
             }
         }
         private void BTNStartLogin_Click(object sender, EventArgs e)

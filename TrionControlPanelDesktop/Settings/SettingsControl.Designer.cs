@@ -382,6 +382,7 @@
             // 
             TGLCustomInstalled.AutoSize = true;
             TGLCustomInstalled.BackColor = Color.FromArgb(28, 33, 40);
+            TGLCustomInstalled.Enabled = false;
             TGLCustomInstalled.Location = new Point(8, 248);
             TGLCustomInstalled.MinimumSize = new Size(45, 22);
             TGLCustomInstalled.Name = "TGLCustomInstalled";
@@ -453,6 +454,7 @@
             ComboBoxCores.BorderColor = Color.FromArgb(0, 174, 219);
             ComboBoxCores.BorderSize = 1;
             ComboBoxCores.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxCores.Enabled = false;
             ComboBoxCores.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             ComboBoxCores.ForeColor = Color.White;
             ComboBoxCores.IconColor = Color.FromArgb(0, 174, 219);
@@ -495,6 +497,7 @@
             // 
             TGLCustomNames.AutoSize = true;
             TGLCustomNames.BackColor = Color.FromArgb(28, 33, 40);
+            TGLCustomNames.Enabled = false;
             TGLCustomNames.Location = new Point(8, 276);
             TGLCustomNames.MinimumSize = new Size(45, 22);
             TGLCustomNames.Name = "TGLCustomNames";
@@ -512,6 +515,7 @@
             // TXTBoxWorldExecName
             // 
             TXTBoxWorldExecName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            TXTBoxWorldExecName.Enabled = false;
             TXTBoxWorldExecName.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTBoxWorldExecName.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
             TXTBoxWorldExecName.Location = new Point(5, 119);
@@ -535,7 +539,7 @@
             label10.ForeColor = Color.White;
             label10.Location = new Point(5, 194);
             label10.Name = "label10";
-            label10.Size = new Size(143, 15);
+            label10.Size = new Size(142, 15);
             label10.TabIndex = 35;
             label10.Text = "MySQL Executable Name:";
             // 
@@ -545,13 +549,14 @@
             label8.ForeColor = Color.White;
             label8.Location = new Point(5, 101);
             label8.Name = "label8";
-            label8.Size = new Size(134, 15);
+            label8.Size = new Size(133, 15);
             label8.TabIndex = 31;
             label8.Text = "World Executable Name";
             // 
             // TXTBoxMySQLExecName
             // 
             TXTBoxMySQLExecName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            TXTBoxMySQLExecName.Enabled = false;
             TXTBoxMySQLExecName.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTBoxMySQLExecName.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
             TXTBoxMySQLExecName.Location = new Point(5, 212);
@@ -572,6 +577,7 @@
             // TXTBoxLoginExecName
             // 
             TXTBoxLoginExecName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            TXTBoxLoginExecName.Enabled = false;
             TXTBoxLoginExecName.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTBoxLoginExecName.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
             TXTBoxLoginExecName.Location = new Point(5, 165);
@@ -595,7 +601,7 @@
             label9.ForeColor = Color.White;
             label9.Location = new Point(5, 147);
             label9.Name = "label9";
-            label9.Size = new Size(136, 15);
+            label9.Size = new Size(135, 15);
             label9.TabIndex = 33;
             label9.Text = "Logon Executable Name";
             // 
@@ -637,6 +643,7 @@
             BTNDownlaodMySQL.BorderRadius = 0;
             BTNDownlaodMySQL.BorderSize = 1;
             BTNDownlaodMySQL.Cursor = Cursors.Hand;
+            BTNDownlaodMySQL.Enabled = false;
             BTNDownlaodMySQL.FlatAppearance.BorderSize = 0;
             BTNDownlaodMySQL.FlatStyle = FlatStyle.Flat;
             BTNDownlaodMySQL.ForeColor = Color.White;
@@ -663,6 +670,7 @@
             BTNModsConfig.BorderRadius = 0;
             BTNModsConfig.BorderSize = 1;
             BTNModsConfig.Cursor = Cursors.Hand;
+            BTNModsConfig.Enabled = false;
             BTNModsConfig.FlatAppearance.BorderSize = 0;
             BTNModsConfig.FlatStyle = FlatStyle.Flat;
             BTNModsConfig.ForeColor = Color.White;
@@ -688,6 +696,7 @@
             BTNAuthConfig.BorderRadius = 0;
             BTNAuthConfig.BorderSize = 1;
             BTNAuthConfig.Cursor = Cursors.Hand;
+            BTNAuthConfig.Enabled = false;
             BTNAuthConfig.FlatAppearance.BorderSize = 0;
             BTNAuthConfig.FlatStyle = FlatStyle.Flat;
             BTNAuthConfig.ForeColor = Color.White;
@@ -713,6 +722,7 @@
             BTNWorldConfig.BorderRadius = 0;
             BTNWorldConfig.BorderSize = 1;
             BTNWorldConfig.Cursor = Cursors.Hand;
+            BTNWorldConfig.Enabled = false;
             BTNWorldConfig.FlatAppearance.BorderSize = 0;
             BTNWorldConfig.FlatStyle = FlatStyle.Flat;
             BTNWorldConfig.ForeColor = Color.White;
@@ -738,6 +748,7 @@
             BTNDiscord.BorderRadius = 0;
             BTNDiscord.BorderSize = 1;
             BTNDiscord.Cursor = Cursors.Hand;
+            BTNDiscord.Enabled = false;
             BTNDiscord.FlatAppearance.BorderSize = 0;
             BTNDiscord.FlatStyle = FlatStyle.Flat;
             BTNDiscord.ForeColor = Color.White;
@@ -1076,6 +1087,7 @@
             metroPanel7.Controls.Add(TXTDDNSInterval);
             metroPanel7.Controls.Add(BTNSaveData);
             metroPanel7.CustomBackground = true;
+            metroPanel7.Enabled = false;
             metroPanel7.HorizontalScrollbar = false;
             metroPanel7.HorizontalScrollbarBarColor = true;
             metroPanel7.HorizontalScrollbarHighlightOnWheel = false;
@@ -1152,6 +1164,7 @@
             BTNWebiste.BorderRadius = 0;
             BTNWebiste.BorderSize = 1;
             BTNWebiste.Cursor = Cursors.Hand;
+            BTNWebiste.Enabled = false;
             BTNWebiste.FlatAppearance.BorderSize = 0;
             BTNWebiste.FlatStyle = FlatStyle.Flat;
             BTNWebiste.ForeColor = Color.White;
@@ -1172,6 +1185,7 @@
             // 
             TGLDDNSRunOnStartup.AutoSize = true;
             TGLDDNSRunOnStartup.Cursor = Cursors.Hand;
+            TGLDDNSRunOnStartup.Enabled = false;
             TGLDDNSRunOnStartup.Location = new Point(5, 115);
             TGLDDNSRunOnStartup.MinimumSize = new Size(45, 22);
             TGLDDNSRunOnStartup.Name = "TGLDDNSRunOnStartup";
@@ -1208,6 +1222,7 @@
             // TXTDDNSInterval
             // 
             TXTDDNSInterval.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            TXTDDNSInterval.Enabled = false;
             TXTDDNSInterval.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTDDNSInterval.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
             TXTDDNSInterval.ForeColor = Color.White;
@@ -1236,6 +1251,7 @@
             BTNSaveData.BorderRadius = 0;
             BTNSaveData.BorderSize = 1;
             BTNSaveData.Cursor = Cursors.Hand;
+            BTNSaveData.Enabled = false;
             BTNSaveData.FlatAppearance.BorderSize = 0;
             BTNSaveData.FlatStyle = FlatStyle.Flat;
             BTNSaveData.ForeColor = Color.White;
@@ -1326,6 +1342,7 @@
             // label7
             // 
             label7.Dock = DockStyle.Fill;
+            label7.Enabled = false;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(0, 174, 219);
             label7.Location = new Point(2, 2);
@@ -1368,6 +1385,7 @@
             // TXTDDNSUsername
             // 
             TXTDDNSUsername.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            TXTDDNSUsername.Enabled = false;
             TXTDDNSUsername.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTDDNSUsername.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
             TXTDDNSUsername.ForeColor = Color.White;
@@ -1388,6 +1406,7 @@
             // TXTDDNSDomain
             // 
             TXTDDNSDomain.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            TXTDDNSDomain.Enabled = false;
             TXTDDNSDomain.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTDDNSDomain.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
             TXTDDNSDomain.ForeColor = Color.White;
@@ -1408,6 +1427,7 @@
             // TXTDDNSPassword
             // 
             TXTDDNSPassword.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            TXTDDNSPassword.Enabled = false;
             TXTDDNSPassword.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTDDNSPassword.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
             TXTDDNSPassword.ForeColor = Color.White;
@@ -1432,6 +1452,7 @@
             ComboBoxDDNService.BorderColor = Color.FromArgb(0, 174, 219);
             ComboBoxDDNService.BorderSize = 1;
             ComboBoxDDNService.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxDDNService.Enabled = false;
             ComboBoxDDNService.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             ComboBoxDDNService.ForeColor = Color.White;
             ComboBoxDDNService.IconColor = Color.FromArgb(0, 174, 219);
@@ -1544,6 +1565,7 @@
             // 
             label31.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label31.BackColor = Color.Transparent;
+            label31.Enabled = false;
             label31.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label31.ForeColor = Color.FromArgb(0, 174, 219);
             label31.Location = new Point(5, 4);
@@ -1584,6 +1606,7 @@
             // 
             TGLClassicLaunch.AutoSize = true;
             TGLClassicLaunch.BackColor = Color.FromArgb(28, 33, 40);
+            TGLClassicLaunch.Enabled = false;
             TGLClassicLaunch.Location = new Point(10, 10);
             TGLClassicLaunch.MinimumSize = new Size(45, 22);
             TGLClassicLaunch.Name = "TGLClassicLaunch";
@@ -1640,6 +1663,7 @@
             // 
             TGLTBCLaunch.AutoSize = true;
             TGLTBCLaunch.BackColor = Color.FromArgb(28, 33, 40);
+            TGLTBCLaunch.Enabled = false;
             TGLTBCLaunch.Location = new Point(10, 10);
             TGLTBCLaunch.MinimumSize = new Size(45, 22);
             TGLTBCLaunch.Name = "TGLTBCLaunch";
@@ -1661,7 +1685,7 @@
             label25.ForeColor = Color.White;
             label25.Location = new Point(61, 13);
             label25.Name = "label25";
-            label25.Size = new Size(222, 15);
+            label25.Size = new Size(223, 15);
             label25.TabIndex = 41;
             label25.Text = "World of Warcraft - The Burning Crusade";
             // 
@@ -1696,6 +1720,7 @@
             // 
             TGLWotLKLaunch.AutoSize = true;
             TGLWotLKLaunch.BackColor = Color.FromArgb(28, 33, 40);
+            TGLWotLKLaunch.Enabled = false;
             TGLWotLKLaunch.Location = new Point(10, 10);
             TGLWotLKLaunch.MinimumSize = new Size(45, 22);
             TGLWotLKLaunch.Name = "TGLWotLKLaunch";
@@ -1752,6 +1777,7 @@
             // 
             TGLCataLaunch.AutoSize = true;
             TGLCataLaunch.BackColor = Color.FromArgb(28, 33, 40);
+            TGLCataLaunch.Enabled = false;
             TGLCataLaunch.Location = new Point(10, 10);
             TGLCataLaunch.MinimumSize = new Size(45, 22);
             TGLCataLaunch.Name = "TGLCataLaunch";
@@ -1819,6 +1845,7 @@
             // 
             TGLMoPLaunch.AutoSize = true;
             TGLMoPLaunch.BackColor = Color.FromArgb(28, 33, 40);
+            TGLMoPLaunch.Enabled = false;
             TGLMoPLaunch.Location = new Point(10, 10);
             TGLMoPLaunch.MinimumSize = new Size(45, 22);
             TGLMoPLaunch.Name = "TGLMoPLaunch";
@@ -1884,6 +1911,7 @@
             BTNInstallSPP.BorderRadius = 0;
             BTNInstallSPP.BorderSize = 1;
             BTNInstallSPP.Cursor = Cursors.Hand;
+            BTNInstallSPP.Enabled = false;
             BTNInstallSPP.FlatAppearance.BorderSize = 0;
             BTNInstallSPP.FlatStyle = FlatStyle.Flat;
             BTNInstallSPP.ForeColor = Color.White;
@@ -1899,6 +1927,7 @@
             BTNInstallSPP.TextColor = Color.White;
             TLTHome.SetToolTip(BTNInstallSPP, "Install the selected emulator");
             BTNInstallSPP.UseVisualStyleBackColor = false;
+            BTNInstallSPP.Visible = false;
             BTNInstallSPP.Click += BTNInstallSPP_Click;
             // 
             // metroPanel17
@@ -1943,6 +1972,7 @@
             // 
             label30.BackColor = Color.Transparent;
             label30.Dock = DockStyle.Fill;
+            label30.Enabled = false;
             label30.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label30.ForeColor = Color.FromArgb(0, 174, 219);
             label30.Location = new Point(2, 2);
@@ -1962,6 +1992,7 @@
             BTNRepairSPP.BorderRadius = 0;
             BTNRepairSPP.BorderSize = 1;
             BTNRepairSPP.Cursor = Cursors.Hand;
+            BTNRepairSPP.Enabled = false;
             BTNRepairSPP.FlatAppearance.BorderSize = 0;
             BTNRepairSPP.FlatStyle = FlatStyle.Flat;
             BTNRepairSPP.ForeColor = Color.White;
@@ -1977,6 +2008,7 @@
             BTNRepairSPP.TextColor = Color.White;
             TLTHome.SetToolTip(BTNRepairSPP, "Repair the selected emulator");
             BTNRepairSPP.UseVisualStyleBackColor = false;
+            BTNRepairSPP.Visible = false;
             BTNRepairSPP.Click += BTNRepairSPP_Click;
             // 
             // BTNUninstallSPP
@@ -1988,6 +2020,7 @@
             BTNUninstallSPP.BorderRadius = 0;
             BTNUninstallSPP.BorderSize = 1;
             BTNUninstallSPP.Cursor = Cursors.Hand;
+            BTNUninstallSPP.Enabled = false;
             BTNUninstallSPP.FlatAppearance.BorderSize = 0;
             BTNUninstallSPP.FlatStyle = FlatStyle.Flat;
             BTNUninstallSPP.ForeColor = Color.White;
@@ -2003,6 +2036,7 @@
             BTNUninstallSPP.TextColor = Color.White;
             TLTHome.SetToolTip(BTNUninstallSPP, "Uninstall the selected emulator");
             BTNUninstallSPP.UseVisualStyleBackColor = false;
+            BTNUninstallSPP.Visible = false;
             BTNUninstallSPP.Click += BTNUninstallSPP_Click;
             // 
             // label29
@@ -2023,6 +2057,7 @@
             ComboBoxSPPVersion.BorderColor = Color.FromArgb(0, 174, 219);
             ComboBoxSPPVersion.BorderSize = 1;
             ComboBoxSPPVersion.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxSPPVersion.Enabled = false;
             ComboBoxSPPVersion.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             ComboBoxSPPVersion.ForeColor = Color.White;
             ComboBoxSPPVersion.IconColor = Color.FromArgb(0, 174, 219);
@@ -2156,7 +2191,7 @@
             LBLTBCVersion.ForeColor = Color.FromArgb(0, 174, 219);
             LBLTBCVersion.Location = new Point(4, 99);
             LBLTBCVersion.Name = "LBLTBCVersion";
-            LBLTBCVersion.Size = new Size(72, 45);
+            LBLTBCVersion.Size = new Size(73, 45);
             LBLTBCVersion.TabIndex = 36;
             LBLTBCVersion.Text = "TBC Version:\r\nLocal:\r\nOnline:";
             // 
@@ -2270,7 +2305,7 @@
             label40.ForeColor = Color.White;
             label40.Location = new Point(54, 105);
             label40.Name = "label40";
-            label40.Size = new Size(111, 15);
+            label40.Size = new Size(112, 15);
             label40.TabIndex = 67;
             label40.Text = "TBC S.P.P. Database";
             // 
@@ -2288,6 +2323,7 @@
             // 
             TGLCataDB.AutoSize = true;
             TGLCataDB.Cursor = Cursors.Hand;
+            TGLCataDB.Enabled = false;
             TGLCataDB.Location = new Point(3, 159);
             TGLCataDB.MinimumSize = new Size(45, 22);
             TGLCataDB.Name = "TGLCataDB";
@@ -2306,6 +2342,7 @@
             // 
             TGLMopDB.AutoSize = true;
             TGLMopDB.Cursor = Cursors.Hand;
+            TGLMopDB.Enabled = false;
             TGLMopDB.Location = new Point(3, 187);
             TGLMopDB.MinimumSize = new Size(45, 22);
             TGLMopDB.Name = "TGLMopDB";
@@ -2324,6 +2361,7 @@
             // 
             TGLCustomDB.AutoSize = true;
             TGLCustomDB.Cursor = Cursors.Hand;
+            TGLCustomDB.Enabled = false;
             TGLCustomDB.Location = new Point(3, 215);
             TGLCustomDB.MinimumSize = new Size(45, 22);
             TGLCustomDB.Name = "TGLCustomDB";
@@ -2343,6 +2381,7 @@
             // 
             TGLClassicDB.AutoSize = true;
             TGLClassicDB.Cursor = Cursors.Hand;
+            TGLClassicDB.Enabled = false;
             TGLClassicDB.Location = new Point(3, 75);
             TGLClassicDB.MinimumSize = new Size(45, 22);
             TGLClassicDB.Name = "TGLClassicDB";
@@ -2361,6 +2400,7 @@
             // 
             TGLTbcDB.AutoSize = true;
             TGLTbcDB.Cursor = Cursors.Hand;
+            TGLTbcDB.Enabled = false;
             TGLTbcDB.Location = new Point(3, 103);
             TGLTbcDB.MinimumSize = new Size(45, 22);
             TGLTbcDB.Name = "TGLTbcDB";
@@ -2379,6 +2419,7 @@
             // 
             TGLWotlkDB.AutoSize = true;
             TGLWotlkDB.Cursor = Cursors.Hand;
+            TGLWotlkDB.Enabled = false;
             TGLWotlkDB.Location = new Point(3, 131);
             TGLWotlkDB.MinimumSize = new Size(45, 22);
             TGLWotlkDB.Name = "TGLWotlkDB";
@@ -2782,6 +2823,7 @@
             BTNDeleteAuth.BorderRadius = 0;
             BTNDeleteAuth.BorderSize = 1;
             BTNDeleteAuth.Cursor = Cursors.Hand;
+            BTNDeleteAuth.Enabled = false;
             BTNDeleteAuth.FlatAppearance.BorderSize = 0;
             BTNDeleteAuth.FlatStyle = FlatStyle.Flat;
             BTNDeleteAuth.ForeColor = Color.White;
@@ -2808,6 +2850,7 @@
             BTNDeleteChar.BorderRadius = 0;
             BTNDeleteChar.BorderSize = 1;
             BTNDeleteChar.Cursor = Cursors.Hand;
+            BTNDeleteChar.Enabled = false;
             BTNDeleteChar.FlatAppearance.BorderSize = 0;
             BTNDeleteChar.FlatStyle = FlatStyle.Flat;
             BTNDeleteChar.ForeColor = Color.White;
@@ -2844,6 +2887,7 @@
             BTNDeleteWorld.BorderRadius = 0;
             BTNDeleteWorld.BorderSize = 1;
             BTNDeleteWorld.Cursor = Cursors.Hand;
+            BTNDeleteWorld.Enabled = false;
             BTNDeleteWorld.FlatAppearance.BorderSize = 0;
             BTNDeleteWorld.FlatStyle = FlatStyle.Flat;
             BTNDeleteWorld.ForeColor = Color.White;
@@ -2864,6 +2908,7 @@
             // TXTWorldDatabase
             // 
             TXTWorldDatabase.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            TXTWorldDatabase.Enabled = false;
             TXTWorldDatabase.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             TXTWorldDatabase.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTWorldDatabase.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
@@ -2895,6 +2940,7 @@
             // TXTCharDatabase
             // 
             TXTCharDatabase.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            TXTCharDatabase.Enabled = false;
             TXTCharDatabase.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             TXTCharDatabase.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTCharDatabase.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
@@ -2926,6 +2972,7 @@
             // TXTAuthDatabase
             // 
             TXTAuthDatabase.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            TXTAuthDatabase.Enabled = false;
             TXTAuthDatabase.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             TXTAuthDatabase.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTAuthDatabase.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
@@ -3040,6 +3087,7 @@
             // 
             // TXTMysqlPassword
             // 
+            TXTMysqlPassword.Enabled = false;
             TXTMysqlPassword.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             TXTMysqlPassword.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTMysqlPassword.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
@@ -3096,6 +3144,7 @@
             // 
             // TXTMysqlUser
             // 
+            TXTMysqlUser.Enabled = false;
             TXTMysqlUser.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             TXTMysqlUser.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTMysqlUser.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
@@ -3126,6 +3175,7 @@
             // 
             // TXTMysqlPort
             // 
+            TXTMysqlPort.Enabled = false;
             TXTMysqlPort.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             TXTMysqlPort.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTMysqlPort.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
@@ -3156,6 +3206,7 @@
             // 
             // TXTMysqlHost
             // 
+            TXTMysqlHost.Enabled = false;
             TXTMysqlHost.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             TXTMysqlHost.FontSize = MetroFramework.MetroTextBoxSize.Small;
             TXTMysqlHost.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
@@ -3312,6 +3363,7 @@
             BTNTrionUpdate.BorderRadius = 0;
             BTNTrionUpdate.BorderSize = 1;
             BTNTrionUpdate.Cursor = Cursors.Hand;
+            BTNTrionUpdate.Enabled = false;
             BTNTrionUpdate.FlatAppearance.BorderSize = 0;
             BTNTrionUpdate.FlatStyle = FlatStyle.Flat;
             BTNTrionUpdate.ForeColor = Color.White;
@@ -3325,7 +3377,7 @@
             BTNTrionUpdate.TabIndex = 41;
             BTNTrionUpdate.Text = "   Update";
             BTNTrionUpdate.TextColor = Color.White;
-            TLTHome.SetToolTip(BTNTrionUpdate, "Updates Database , Trion Control Panel and all installed emulators when available");
+            TLTHome.SetToolTip(BTNTrionUpdate, "Not available");
             BTNTrionUpdate.UseVisualStyleBackColor = false;
             BTNTrionUpdate.Click += BTNTrionUpdate_Click;
             // 
@@ -3452,7 +3504,7 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(63, 101);
             label2.Name = "label2";
-            label2.Size = new Size(132, 15);
+            label2.Size = new Size(133, 15);
             label2.TabIndex = 39;
             label2.Text = "Launch Trion on startup";
             // 
@@ -3465,11 +3517,13 @@
             LBLAutoUpdateMySQL.Size = new Size(114, 15);
             LBLAutoUpdateMySQL.TabIndex = 37;
             LBLAutoUpdateMySQL.Text = "Auto update MySQL";
+            LBLAutoUpdateMySQL.Visible = false;
             // 
             // TGLAutoUpdateMySQL
             // 
             TGLAutoUpdateMySQL.AutoSize = true;
             TGLAutoUpdateMySQL.Cursor = Cursors.Hand;
+            TGLAutoUpdateMySQL.Enabled = false;
             TGLAutoUpdateMySQL.Location = new Point(12, 278);
             TGLAutoUpdateMySQL.MinimumSize = new Size(45, 22);
             TGLAutoUpdateMySQL.Name = "TGLAutoUpdateMySQL";
@@ -3480,8 +3534,9 @@
             TGLAutoUpdateMySQL.Size = new Size(45, 22);
             TGLAutoUpdateMySQL.SolidStyle = false;
             TGLAutoUpdateMySQL.TabIndex = 36;
-            TLTHome.SetToolTip(TGLAutoUpdateMySQL, "Enable/Disable: Update MySQL automatically when available");
+            TLTHome.SetToolTip(TGLAutoUpdateMySQL, "Not available");
             TGLAutoUpdateMySQL.UseVisualStyleBackColor = true;
+            TGLAutoUpdateMySQL.Visible = false;
             TGLAutoUpdateMySQL.CheckedChanged += TGLAutoUpdateMySQL_CheckedChanged;
             // 
             // LBLAutoUpdateSPP
@@ -3493,11 +3548,13 @@
             LBLAutoUpdateSPP.Size = new Size(105, 15);
             LBLAutoUpdateSPP.TabIndex = 35;
             LBLAutoUpdateSPP.Text = "Auto update S.P.P.";
+            LBLAutoUpdateSPP.Visible = false;
             // 
             // TGLAutoUpdateCore
             // 
             TGLAutoUpdateCore.AutoSize = true;
             TGLAutoUpdateCore.Cursor = Cursors.Hand;
+            TGLAutoUpdateCore.Enabled = false;
             TGLAutoUpdateCore.Location = new Point(12, 250);
             TGLAutoUpdateCore.MinimumSize = new Size(45, 22);
             TGLAutoUpdateCore.Name = "TGLAutoUpdateCore";
@@ -3508,8 +3565,9 @@
             TGLAutoUpdateCore.Size = new Size(45, 22);
             TGLAutoUpdateCore.SolidStyle = false;
             TGLAutoUpdateCore.TabIndex = 34;
-            TLTHome.SetToolTip(TGLAutoUpdateCore, "Enable/Disable: Update S.P.P. automatically when available");
+            TLTHome.SetToolTip(TGLAutoUpdateCore, "Not available");
             TGLAutoUpdateCore.UseVisualStyleBackColor = true;
+            TGLAutoUpdateCore.Visible = false;
             TGLAutoUpdateCore.CheckedChanged += TGLAutoUpdateCore_CheckedChanged;
             // 
             // LBLAutoUpdateTrion
@@ -3518,14 +3576,16 @@
             LBLAutoUpdateTrion.ForeColor = Color.White;
             LBLAutoUpdateTrion.Location = new Point(63, 225);
             LBLAutoUpdateTrion.Name = "LBLAutoUpdateTrion";
-            LBLAutoUpdateTrion.Size = new Size(102, 15);
+            LBLAutoUpdateTrion.Size = new Size(103, 15);
             LBLAutoUpdateTrion.TabIndex = 33;
             LBLAutoUpdateTrion.Text = "Auto update Trion";
+            LBLAutoUpdateTrion.Visible = false;
             // 
             // TGLAutoUpdateTrion
             // 
             TGLAutoUpdateTrion.AutoSize = true;
             TGLAutoUpdateTrion.Cursor = Cursors.Hand;
+            TGLAutoUpdateTrion.Enabled = false;
             TGLAutoUpdateTrion.Location = new Point(12, 222);
             TGLAutoUpdateTrion.MinimumSize = new Size(45, 22);
             TGLAutoUpdateTrion.Name = "TGLAutoUpdateTrion";
@@ -3536,8 +3596,9 @@
             TGLAutoUpdateTrion.Size = new Size(45, 22);
             TGLAutoUpdateTrion.SolidStyle = false;
             TGLAutoUpdateTrion.TabIndex = 32;
-            TLTHome.SetToolTip(TGLAutoUpdateTrion, "Enable/Disable: Update Trion automatically when available");
+            TLTHome.SetToolTip(TGLAutoUpdateTrion, "Not available");
             TGLAutoUpdateTrion.UseVisualStyleBackColor = true;
+            TGLAutoUpdateTrion.Visible = false;
             TGLAutoUpdateTrion.CheckedChanged += TGLAutoUpdateTrion_CheckedChanged;
             // 
             // TGLStayInTrey
@@ -3610,7 +3671,7 @@
             LBLStayInTray.ForeColor = Color.White;
             LBLStayInTray.Location = new Point(63, 17);
             LBLStayInTray.Name = "LBLStayInTray";
-            LBLStayInTray.Size = new Size(115, 15);
+            LBLStayInTray.Size = new Size(116, 15);
             LBLStayInTray.TabIndex = 19;
             LBLStayInTray.Text = "Close to System Tray";
             // 
@@ -3685,6 +3746,7 @@
             BTNMySQLExecLovation.BorderRadius = 0;
             BTNMySQLExecLovation.BorderSize = 1;
             BTNMySQLExecLovation.Cursor = Cursors.Hand;
+            BTNMySQLExecLovation.Enabled = false;
             BTNMySQLExecLovation.FlatAppearance.BorderSize = 0;
             BTNMySQLExecLovation.FlatStyle = FlatStyle.Flat;
             BTNMySQLExecLovation.ForeColor = Color.White;
@@ -3711,6 +3773,7 @@
             BTNCoreExecLovation.BorderRadius = 0;
             BTNCoreExecLovation.BorderSize = 1;
             BTNCoreExecLovation.Cursor = Cursors.Hand;
+            BTNCoreExecLovation.Enabled = false;
             BTNCoreExecLovation.FlatAppearance.BorderSize = 0;
             BTNCoreExecLovation.FlatStyle = FlatStyle.Flat;
             BTNCoreExecLovation.ForeColor = Color.White;
@@ -3788,8 +3851,8 @@
             // 
             // TBControler
             // 
-            TBControler.Controls.Add(TabPageTrion);
             TBControler.Controls.Add(TabPageSPP);
+            TBControler.Controls.Add(TabPageTrion);
             TBControler.Controls.Add(TabPageDDNS);
             TBControler.Controls.Add(TabPageCore);
             TBControler.Controls.Add(TabPageDatabase);
