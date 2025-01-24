@@ -18,7 +18,7 @@ namespace TrionControlPanelDesktop
         List<int> OpenPorts = [];
         int positionY = 0;
         int direction = -1;
-         int speed = 7; // How fast the button moves
+        int speed = 7; // How fast the button moves
         string Result { get; set; }
         readonly static DatabaseControl databaseControl = new();
         readonly static HomeControl homeControl = new();
@@ -97,7 +97,18 @@ namespace TrionControlPanelDesktop
         }
         private async void MainForm_LoadAsync(object sender, EventArgs e)
         {
-            Text = "Trion Control Panel - AzerothCore Single Player Repack";
+            string version = string.Empty;
+            try
+            {
+                version = File.ReadAllText("Version.txt");
+            }
+            catch
+            {
+                //ignore
+            }
+
+
+            Text = $"Trion Control Panel - AzerothCore Single Player {version}";
             await Setting.Load();
             await Main.CheckForUpdate();
             User.UI.Form.StartUpLoading++;
@@ -244,12 +255,12 @@ namespace TrionControlPanelDesktop
         private void BTNStartLogin_Click(object sender, EventArgs e)
         {
             if (!Main.ServerStatusLogon())
-            { 
-                Task.Run(async () => await Main.StartLogon()); 
+            {
+                Task.Run(async () => await Main.StartLogon());
             }
             else
-            { 
-                Task.Run(async () => await Main.StopLogon()); 
+            {
+                Task.Run(async () => await Main.StopLogon());
             }
         }
         private void BTNStartWorld_Click(object sender, EventArgs e)
@@ -391,7 +402,7 @@ namespace TrionControlPanelDesktop
             }
 
             // Stop the timer when the button reaches the target
-            if (BTNSettings.Top == 86  && direction == -1 || BTNSettings.Top == 162 && direction == -1)
+            if (BTNSettings.Top == 86 && direction == -1 || BTNSettings.Top == 162 && direction == -1)
             {
                 TimerButtonSlide.Stop();
             }
