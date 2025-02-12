@@ -42,6 +42,7 @@ namespace TrionControlPanelDesktop
             PNLControl = new MetroPanel();
             TimerWacher = new System.Windows.Forms.Timer(components);
             PnlButtonFront = new MetroPanel();
+            BTNStartWebsite = new UI.Controls.CustomButton();
             BTNStartMySQL = new UI.Controls.CustomButton();
             BTNStartLogin = new UI.Controls.CustomButton();
             BTNStartWorld = new UI.Controls.CustomButton();
@@ -214,6 +215,7 @@ namespace TrionControlPanelDesktop
             PnlButtonFront.Border = true;
             PnlButtonFront.BorderColor = Color.Black;
             PnlButtonFront.BorderSize = 1;
+            PnlButtonFront.Controls.Add(BTNStartWebsite);
             PnlButtonFront.Controls.Add(BTNStartMySQL);
             PnlButtonFront.Controls.Add(BTNStartLogin);
             PnlButtonFront.Controls.Add(BTNStartWorld);
@@ -235,6 +237,32 @@ namespace TrionControlPanelDesktop
             PnlButtonFront.VerticalScrollbarHighlightOnWheel = false;
             PnlButtonFront.VerticalScrollbarSize = 10;
             // 
+            // BTNStartWebsite
+            // 
+            BTNStartWebsite.Anchor = AnchorStyles.Top;
+            BTNStartWebsite.BackColor = Color.FromArgb(28, 33, 40);
+            BTNStartWebsite.BackgroundColor = Color.FromArgb(28, 33, 40);
+            BTNStartWebsite.BorderColor = Color.FromArgb(0, 174, 219);
+            BTNStartWebsite.BorderRadius = 0;
+            BTNStartWebsite.BorderSize = 1;
+            BTNStartWebsite.Cursor = Cursors.Hand;
+            BTNStartWebsite.FlatAppearance.BorderSize = 0;
+            BTNStartWebsite.FlatStyle = FlatStyle.Flat;
+            BTNStartWebsite.ForeColor = Color.White;
+            BTNStartWebsite.Image = (Image)resources.GetObject("BTNStartWebsite.Image");
+            BTNStartWebsite.ImageAlign = ContentAlignment.MiddleLeft;
+            BTNStartWebsite.Location = new Point(590, 9);
+            BTNStartWebsite.Name = "BTNStartWebsite";
+            BTNStartWebsite.NotificationCount = 0;
+            BTNStartWebsite.Size = new Size(140, 40);
+            BTNStartWebsite.TabIndex = 9;
+            BTNStartWebsite.Text = "    Website";
+            BTNStartWebsite.TextColor = Color.White;
+            TLTHome.SetToolTip(BTNStartWebsite, "Start / Stop Website server based on Website.bat script");
+            BTNStartWebsite.UseVisualStyleBackColor = false;
+            BTNStartWebsite.Visible = false;
+            BTNStartWebsite.Click += BTNStartWebsite_Click;
+            // 
             // BTNStartMySQL
             // 
             BTNStartMySQL.Anchor = AnchorStyles.Top;
@@ -249,7 +277,7 @@ namespace TrionControlPanelDesktop
             BTNStartMySQL.ForeColor = Color.White;
             BTNStartMySQL.Image = (Image)resources.GetObject("BTNStartMySQL.Image");
             BTNStartMySQL.ImageAlign = ContentAlignment.MiddleLeft;
-            BTNStartMySQL.Location = new Point(206, 8);
+            BTNStartMySQL.Location = new Point(152, 9);
             BTNStartMySQL.Name = "BTNStartMySQL";
             BTNStartMySQL.NotificationCount = 0;
             BTNStartMySQL.Size = new Size(140, 40);
@@ -275,7 +303,7 @@ namespace TrionControlPanelDesktop
             BTNStartLogin.ForeColor = Color.White;
             BTNStartLogin.Image = (Image)resources.GetObject("BTNStartLogin.Image");
             BTNStartLogin.ImageAlign = ContentAlignment.MiddleLeft;
-            BTNStartLogin.Location = new Point(498, 8);
+            BTNStartLogin.Location = new Point(444, 9);
             BTNStartLogin.Name = "BTNStartLogin";
             BTNStartLogin.NotificationCount = 0;
             BTNStartLogin.Size = new Size(140, 40);
@@ -301,7 +329,7 @@ namespace TrionControlPanelDesktop
             BTNStartWorld.ForeColor = Color.White;
             BTNStartWorld.Image = (Image)resources.GetObject("BTNStartWorld.Image");
             BTNStartWorld.ImageAlign = ContentAlignment.MiddleLeft;
-            BTNStartWorld.Location = new Point(352, 8);
+            BTNStartWorld.Location = new Point(298, 9);
             BTNStartWorld.Name = "BTNStartWorld";
             BTNStartWorld.NotificationCount = 0;
             BTNStartWorld.Size = new Size(140, 40);
@@ -596,6 +624,7 @@ namespace TrionControlPanelDesktop
         private PictureBox BTNSupport;
         private System.Windows.Forms.Timer TimerButtonSlide;
         private UI.Controls.FlatAlertBox flatAlertBox1;
-        private static MetroPanel PNLControl;
+        private UI.Controls.CustomButton BTNStartWebsite;
+        public MetroPanel PNLControl;
     }
 }

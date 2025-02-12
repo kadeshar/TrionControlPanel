@@ -14,6 +14,7 @@ namespace TrionControlPanelDesktop
 {
     public partial class MainForm : MetroForm
     {
+        bool _websiteRunning = false;
         List<int> Ports = [3306, 8085, 3724];
         List<int> OpenPorts = [];
         int positionY = 0;
@@ -152,8 +153,15 @@ namespace TrionControlPanelDesktop
             { BTNStartLogin.Image = Properties.Resources.power_on_30; }
             else { BTNStartLogin.Image = Properties.Resources.power_off_30; }
             //
-            if (User.UI.Form.DBRunning && User.UI.Form.DBStarted) { BTNStartMySQL.Image = Properties.Resources.power_on_30; }
-            else { BTNStartMySQL.Image = Properties.Resources.power_off_30; }
+            if (User.UI.Form.DBRunning && User.UI.Form.DBStarted)
+            {
+                BTNStartMySQL.Image = Properties.Resources.power_on_30;
+            }
+            else
+            {
+                BTNStartMySQL.Image = Properties.Resources.power_off_30;
+                BTNStartWebsite.Image = Properties.Resources.power_off_30;
+            }
 
             BTNNotification.NotificationCount = User.UI.Form.Notyfications;
             BTNDownload.NotificationCount = DownloadControl.CurrentDownloadCount;
@@ -167,6 +175,7 @@ namespace TrionControlPanelDesktop
                 BTNStartLogin.Visible = true;
                 BTNStartWorld.Visible = true;
                 BTNStartMySQL.Visible = true;
+                BTNStartWebsite.Visible = true;
                 BTNNotification.Visible = true;
                 BTNHome.Visible = true;
                 BTNSettings.Visible = true;
@@ -179,6 +188,7 @@ namespace TrionControlPanelDesktop
             {
                 BTNStartWorld.Enabled = true;
                 BTNStartLogin.Enabled = true;
+                BTNStartWebsite.Enabled = !_websiteRunning;
                 TimerButtonSlide.Start();
                 direction = 1;
                 positionY = 162;
@@ -189,6 +199,7 @@ namespace TrionControlPanelDesktop
             {
                 BTNStartWorld.Enabled = false;
                 BTNStartLogin.Enabled = false;
+                BTNStartWebsite.Enabled = false;
                 BTNdatabase.Visible = false;
                 TimerButtonSlide.Start();
                 direction = -1;
@@ -270,7 +281,7 @@ namespace TrionControlPanelDesktop
             else
             { Task.Run(async () => await Main.StopWorld()); }
         }
-        public static void LoadDownload()
+        public void LoadDownload()
         {
             if (CurrentControl != CurrentControl.Download)
             {
@@ -278,7 +289,7 @@ namespace TrionControlPanelDesktop
                 ChangeControl();
             }
         }
-        public static void ChangeControl()
+        public void ChangeControl()
         {
             switch (CurrentControl)
             {
@@ -406,6 +417,26 @@ namespace TrionControlPanelDesktop
             {
                 TimerButtonSlide.Stop();
             }
+        }
+
+        private async void BTNStartWebsite_Click(object sender, EventArgs e)
+        {
+            if (await Helper.IsPortOpen(80, "127.0.0.1"))
+            {
+                MetroMessageBox.Show(this, "The port 80 is used! \n You need the port to start the website!", "Warning!", Setting.List.NotificationSound, MessageBoxButtons.OK, MessageBoxIcon.None);
+                return;
+            }
+
+            if (await Helper.IsPortOpen(443, "127.0.0.1"))
+            {
+                MetroMessageBox.Show(this, "The port 443 is used! \n You need the port to start the website!", "Warning!", Setting.List.NotificationSound, MessageBoxButtons.OK, MessageBoxIcon.None);
+                return;
+            }
+
+            //BTNStartWebsite.Enabled = false;
+            //BTNStartWebsite.Image = Properties.Resources.power_on_30;
+            _websiteRunning = true;
+            await Main.StartWebsite();
         }
     }
 }

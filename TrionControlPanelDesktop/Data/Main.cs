@@ -456,6 +456,7 @@ namespace TrionControlPanelDesktop.Data
                 User.System.WorldStartTime = DateTime.Now;
             }
         }
+
         public static async Task StartLogon()
         {
             User.System.LogonProcessesID.Clear();
@@ -1242,6 +1243,17 @@ namespace TrionControlPanelDesktop.Data
                 //    }
                 //}
             }
+        }
+
+        public static async Task StartWebsite()
+        {
+            await Watcher.ApplicationStart(
+                    "Website.bat",
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "Website.bat",
+                    true,
+                    null
+                );
         }
     }
 }
