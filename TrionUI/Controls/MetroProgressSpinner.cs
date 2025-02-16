@@ -279,7 +279,15 @@ namespace MetroFramework.Controls
                         sweepAngle = -sweepAngle;
                     }
 
-                    e.Graphics.DrawArc(forePen, padding, padding, Width - 2 * padding - 1, Height - 2 * padding - 1, angle, sweepAngle);
+                    try
+                    {
+                        e.Graphics.DrawArc(forePen, padding, padding, Width - 2 * padding - 1, Height - 2 * padding - 1, angle, sweepAngle);
+                    }
+                    catch
+                    {
+                        //ignore
+                    }
+                    
                 }
                 else
                 {
@@ -302,7 +310,15 @@ namespace MetroFramework.Controls
                         {
                             float startAngle = angle + (offset - (ensureVisible ? 30 : 0)) * (backwards ? 1 : -1);
                             float sweepAngle = 15 * (backwards ? 1 : -1);
-                            e.Graphics.DrawArc(gradPen, padding, padding, Width - 2 * padding - 1, Height - 2 * padding - 1, startAngle, sweepAngle);
+                            try
+                            {
+                                e.Graphics.DrawArc(gradPen, padding, padding, Width - 2 * padding - 1, Height - 2 * padding - 1, startAngle, sweepAngle);
+                            }
+                            catch
+                            {
+                                //ignore
+                            }
+                            
                         }
                     }
                 }
