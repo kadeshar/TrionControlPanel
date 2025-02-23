@@ -153,6 +153,10 @@ namespace TrionControlPanelDesktop.Data
         }
         public class System
         {
+            public static bool DatabaseIsStarting { get; set; }
+            public static bool WorldIsStarting { get; set; }
+            public static bool LogonIsStarting { get; set; }
+
             public static DateTime DatabaseStartTime { get; set; }
             public static DateTime WorldStartTime { get; set; }
             public static DateTime LogonStartTime { get; set; }

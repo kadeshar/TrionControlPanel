@@ -339,6 +339,7 @@ namespace TrionControlPanelDesktop.Data
         }
         public static async Task StartDatabase(string argu)
         {
+            User.System.DatabaseIsStarting = true;
             User.System.DatabaseProcessID.Clear();
             if (Setting.List.DBExeLoc != string.Empty)
             {
@@ -350,6 +351,7 @@ namespace TrionControlPanelDesktop.Data
                     argu);
                 User.System.DatabaseProcessID.Add(new Lists.ProcessID()
                 { ID = ID, Name = Setting.List.DBExeName });
+                User.System.DatabaseIsStarting = false;
                 User.UI.Form.DBStarted = true;
             }
         }
@@ -369,6 +371,7 @@ namespace TrionControlPanelDesktop.Data
         }
         public static async Task StartWorld()
         {
+            User.System.WorldIsStarting = true;
             User.System.WorldProcessesID.Clear();
             if (Setting.List.LaunchCustomCore && !User.UI.Form.CustWorldRunning)
             {
@@ -450,6 +453,7 @@ namespace TrionControlPanelDesktop.Data
                 User.UI.Form.MOPWorldStarted = true;
             }
 
+            User.System.WorldIsStarting = false;
             if (User.System.WorldProcessesID.Count > 0)
             {
                 User.UI.Resource.CurrentWorldID = User.System.WorldProcessesID[0].ID;
@@ -459,6 +463,7 @@ namespace TrionControlPanelDesktop.Data
 
         public static async Task StartLogon()
         {
+            User.System.LogonIsStarting = true;
             User.System.LogonProcessesID.Clear();
             if (Setting.List.LaunchCustomCore && !User.UI.Form.CustLogonRunning)
             {
@@ -539,6 +544,7 @@ namespace TrionControlPanelDesktop.Data
                 User.UI.Form.MOPLogonStarted = true;
             }
 
+            User.System.LogonIsStarting = false;
             if (User.System.LogonProcessesID.Count > 0)
             {
                 User.UI.Resource.CurrentAuthID = User.System.LogonProcessesID[0].ID;
@@ -732,7 +738,7 @@ namespace TrionControlPanelDesktop.Data
         }
         public static async Task CrashDetector(int Attempts)
         {
-            if (User.UI.Form.CustWorldStarted && !User.UI.Form.CustWorldRunning)
+            if (User.UI.Form.CustWorldStarted && !User.UI.Form.CustWorldRunning && !User.System.WorldIsStarting)
             {
                 while (Attempt.CustomWorld < Attempts)
                 {
@@ -772,7 +778,7 @@ namespace TrionControlPanelDesktop.Data
                     }
                 }
             }
-            if (User.UI.Form.CustLogonStarted && !User.UI.Form.CustLogonRunning)
+            if (User.UI.Form.CustLogonStarted && !User.UI.Form.CustLogonRunning && !User.System.LogonIsStarting)
             {
                 while (Attempt.CustomLogon < Attempts)
                 {
@@ -812,7 +818,7 @@ namespace TrionControlPanelDesktop.Data
                     }
                 }
             }
-            if (User.UI.Form.ClassicWorldStarted && !User.UI.Form.ClassicWorldRunning)
+            if (User.UI.Form.ClassicWorldStarted && !User.UI.Form.ClassicWorldRunning && !User.System.WorldIsStarting)
             {
                 while (Attempt.ClassicWorld < Attempts)
                 {
@@ -852,7 +858,7 @@ namespace TrionControlPanelDesktop.Data
                     }
                 }
             }
-            if (User.UI.Form.ClassicLogonStarted && !User.UI.Form.ClassicLogonRunning)
+            if (User.UI.Form.ClassicLogonStarted && !User.UI.Form.ClassicLogonRunning && !User.System.LogonIsStarting)
             {
                 while (Attempt.ClassicLogon < Attempts)
                 {
@@ -892,7 +898,7 @@ namespace TrionControlPanelDesktop.Data
                     }
                 }
             }
-            if (User.UI.Form.TBCWorldStarted && !User.UI.Form.TBCWorldRunning)
+            if (User.UI.Form.TBCWorldStarted && !User.UI.Form.TBCWorldRunning && !User.System.WorldIsStarting)
             {
                 while (Attempt.TBCWorld < Attempts)
                 {
@@ -932,7 +938,7 @@ namespace TrionControlPanelDesktop.Data
                     }
                 }
             }
-            if (User.UI.Form.TBCLogonStarted && !User.UI.Form.TBCLogonRunning)
+            if (User.UI.Form.TBCLogonStarted && !User.UI.Form.TBCLogonRunning && !User.System.LogonIsStarting)
             {
                 while (Attempt.TBCLogon < Attempts)
                 {
@@ -972,7 +978,7 @@ namespace TrionControlPanelDesktop.Data
                     }
                 }
             }
-            if (User.UI.Form.WotLKWorldStarted && !User.UI.Form.WotLKWorldRunning)
+            if (User.UI.Form.WotLKWorldStarted && !User.UI.Form.WotLKWorldRunning && !User.System.WorldIsStarting)
             {
                 while (Attempt.WotlkWorld < Attempts)
                 {
@@ -1014,7 +1020,7 @@ namespace TrionControlPanelDesktop.Data
                 }
 
             }
-            if (User.UI.Form.WotLKLogonStarted && !User.UI.Form.WotLKLogonRunning)
+            if (User.UI.Form.WotLKLogonStarted && !User.UI.Form.WotLKLogonRunning && !User.System.LogonIsStarting)
             {
 
                 while (Attempt.WotlkLogon < Attempts)
@@ -1053,7 +1059,7 @@ namespace TrionControlPanelDesktop.Data
                     }
                 }
             }
-            if (User.UI.Form.CataWorldStarted && !User.UI.Form.CataWorldRunning)
+            if (User.UI.Form.CataWorldStarted && !User.UI.Form.CataWorldRunning && !User.System.WorldIsStarting)
             {
                 while (Attempt.CataWorld < Attempts)
                 {
@@ -1093,7 +1099,7 @@ namespace TrionControlPanelDesktop.Data
                     }
                 }
             }
-            if (User.UI.Form.CataLogonStarted && !User.UI.Form.CataLogonRunning)
+            if (User.UI.Form.CataLogonStarted && !User.UI.Form.CataLogonRunning && !User.System.LogonIsStarting)
             {
                 while (Attempt.CataLogon < Attempts)
                 {
@@ -1133,7 +1139,7 @@ namespace TrionControlPanelDesktop.Data
                     }
                 }
             }
-            if (User.UI.Form.MOPWorldStarted && !User.UI.Form.MOPWorldRunning)
+            if (User.UI.Form.MOPWorldStarted && !User.UI.Form.MOPWorldRunning && !User.System.WorldIsStarting)
             {
                 while (Attempt.MopWorld < Attempts)
                 {
@@ -1173,7 +1179,7 @@ namespace TrionControlPanelDesktop.Data
                     }
                 }
             }
-            if (User.UI.Form.MOPLogonStarted && !User.UI.Form.MOPLogonRunning)
+            if (User.UI.Form.MOPLogonStarted && !User.UI.Form.MOPLogonRunning && !User.System.LogonIsStarting)
             {
                 while (Attempt.MopLogon < Attempts)
                 {
@@ -1213,7 +1219,7 @@ namespace TrionControlPanelDesktop.Data
                     }
                 }
             }
-            if (User.UI.Form.DBStarted && !User.UI.Form.DBRunning)
+            if (User.UI.Form.DBStarted && !User.UI.Form.DBRunning && !User.System.DatabaseIsStarting)
             {
                 //await Task.Delay(20000);
                 //while (Attempt.Database < Attempts)
@@ -1251,7 +1257,7 @@ namespace TrionControlPanelDesktop.Data
                     "Website.bat",
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "Website.bat",
-                    true,
+                    false,
                     null
                 );
         }
