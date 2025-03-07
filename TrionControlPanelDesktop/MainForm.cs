@@ -80,6 +80,7 @@ namespace TrionControlPanelDesktop
             LblVersion.Text = $"Version: {Assembly.GetExecutingAssembly().GetName().Version}";
             TLTHome.BackColor = Color.Red;
             if (File.Exists("setup.exe")) { File.Delete("setup.exe"); }
+            TimerWacher.Interval = 5000;
         }
         private async Task CheckPorts()
         {
@@ -226,14 +227,20 @@ namespace TrionControlPanelDesktop
         }
         private void StartWorldTSMItem_Click(object sender, EventArgs e)
         {
+            TimerWacher.Stop();
+            TimerWacher.Start();
             BTNStartWorld_Click(sender, e);
         }
         private void StartLogonTSMItem_Click(object sender, EventArgs e)
         {
+            TimerWacher.Stop();
+            TimerWacher.Start();
             BTNStartLogin_Click(sender, e);
         }
         private void StartDatabaseTSMItem_Click(object sender, EventArgs e)
         {
+            TimerWacher.Stop();
+            TimerWacher.Start();
             BTNStartMySQL_Click(sender, e);
         }
         private async void BTNStartMySQL_Click(object sender, EventArgs e)
