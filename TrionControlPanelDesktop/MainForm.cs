@@ -80,7 +80,6 @@ namespace TrionControlPanelDesktop
             LblVersion.Text = $"Version: {Assembly.GetExecutingAssembly().GetName().Version}";
             TLTHome.BackColor = Color.Red;
             if (File.Exists("setup.exe")) { File.Delete("setup.exe"); }
-            TimerWacher.Interval = 5000;
         }
         private async Task CheckPorts()
         {
@@ -112,11 +111,11 @@ namespace TrionControlPanelDesktop
 
             Text = $"Trion Control Panel - AzerothCore Single Player {version}";
             await Setting.Load();
-            await Main.CheckForUpdate();
+            //await Main.CheckForUpdate();
             User.UI.Form.StartUpLoading++;
             LoadData();
             await CheckPorts();
-            await ApiRespound();
+            //await ApiRespound();
 
         }
         private void SettingsBTN_Click(object sender, EventArgs e)
@@ -227,24 +226,20 @@ namespace TrionControlPanelDesktop
         }
         private void StartWorldTSMItem_Click(object sender, EventArgs e)
         {
-            TimerWacher.Stop();
-            TimerWacher.Start();
             BTNStartWorld_Click(sender, e);
         }
         private void StartLogonTSMItem_Click(object sender, EventArgs e)
         {
-            TimerWacher.Stop();
-            TimerWacher.Start();
             BTNStartLogin_Click(sender, e);
         }
         private void StartDatabaseTSMItem_Click(object sender, EventArgs e)
         {
-            TimerWacher.Stop();
-            TimerWacher.Start();
             BTNStartMySQL_Click(sender, e);
         }
         private async void BTNStartMySQL_Click(object sender, EventArgs e)
         {
+            TimerWacher.Stop();
+            TimerCrashDetected.Stop();
             if (!User.UI.Form.DBRunning && !User.UI.Form.DBStarted)
             {
                 User.System.DatabaseStartTime = DateTime.Now;
@@ -269,9 +264,13 @@ namespace TrionControlPanelDesktop
                     await Main.StopDatabase();
                 }
             }
+            TimerWacher.Start();
+            TimerCrashDetected.Start();
         }
         private void BTNStartLogin_Click(object sender, EventArgs e)
         {
+            TimerWacher.Stop();
+            TimerCrashDetected.Stop();
             if (!Main.ServerStatusLogon())
             {
                 Task.Run(async () => await Main.StartLogon());
@@ -280,13 +279,19 @@ namespace TrionControlPanelDesktop
             {
                 Task.Run(async () => await Main.StopLogon());
             }
+            TimerWacher.Start();
+            TimerCrashDetected.Start();
         }
         private void BTNStartWorld_Click(object sender, EventArgs e)
         {
+            TimerWacher.Stop();
+            TimerCrashDetected.Stop();
             if (!Main.ServerStatusWorld() && !Main.ServerStartedWorld())
             { Task.Run(async () => await Main.StartWorld()); }
             else
             { Task.Run(async () => await Main.StopWorld()); }
+            TimerWacher.Start();
+            TimerCrashDetected.Start();
         }
         public void LoadDownload()
         {

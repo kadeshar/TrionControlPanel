@@ -738,6 +738,13 @@ namespace TrionControlPanelDesktop.Data
         }
         public static async Task CrashDetector(int Attempts)
         {
+            if (User.System.WorldIsStarting ||
+                User.System.LogonIsStarting ||
+                User.System.DatabaseIsStarting)
+            {
+                return;
+            }
+
             if (User.UI.Form.CustWorldStarted && !User.UI.Form.CustWorldRunning && !User.System.WorldIsStarting)
             {
                 while (Attempt.CustomWorld < Attempts)
