@@ -134,19 +134,26 @@ namespace TrionLibrary.Sys
         public static int MachineCpuUtilization()
         {
             if (OSRuinning() == "Widnows") {
-                // Initialize PerformanceCounters for each CPU core
-                // int coreCount = Environment.ProcessorCount;
-                // Create an instance of PerformanceCounter to monitor the total CPU usage
-                PerformanceCounter cpuCounters = new("Processor Information", "% Processor Utility", "_Total");
+                try
+                {
+                    // Initialize PerformanceCounters for each CPU core
+                    // int coreCount = Environment.ProcessorCount;
+                    // Create an instance of PerformanceCounter to monitor the total CPU usage
+                    PerformanceCounter cpuCounters = new("Processor Information", "% Processor Utility", "_Total");
 
-                // Discard the first value
-                dynamic firstValue = cpuCounters.NextValue();
-                // Give some time to initialize
-                Thread.Sleep(500);
-                //report
-                dynamic SecValue = cpuCounters.NextValue();
-                if (SecValue > 100) { SecValue = 100; }
-                return (int)SecValue;
+                    // Discard the first value
+                    dynamic firstValue = cpuCounters.NextValue();
+                    // Give some time to initialize
+                    Thread.Sleep(500);
+                    //report
+                    dynamic SecValue = cpuCounters.NextValue();
+                    if (SecValue > 100) { SecValue = 100; }
+                    return (int)SecValue;
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
             }
             else if (OSRuinning() == "Unix")
             {
@@ -178,16 +185,24 @@ namespace TrionLibrary.Sys
         {
             if (OSRuinning() == "Widnows")
             {
-                // Specify the category and counter for memory usage
-                string categoryName = "Memory";
-                string counterName = "Available MBytes"; // You can also use "Available MBytes" for available memory
+                try
+                {
+                    // Specify the category and counter for memory usage
+                    string categoryName = "Memory";
+                    string counterName = "Available MBytes"; // You can also use "Available MBytes" for available memory
 
-                // Create a PerformanceCounter instance
-                PerformanceCounter performanceCounter = new(categoryName, counterName);
+                    // Create a PerformanceCounter instance
+                    PerformanceCounter performanceCounter = new(categoryName, counterName);
 
-                // Get the memory usage in megabytes
-                float memoryUsageMB = performanceCounter.NextValue();
-                return Convert.ToInt32(memoryUsageMB);
+                    // Get the memory usage in megabytes
+                    float memoryUsageMB = performanceCounter.NextValue();
+                    return Convert.ToInt32(memoryUsageMB);
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+                
             }
             else if (OSRuinning() == "Unix")
             {
@@ -325,12 +340,19 @@ namespace TrionLibrary.Sys
         {
             try
             {
-                Process process = Process.GetProcessById(ProcessId);
-                PerformanceCounter ramCounter = new("Process", "Working Set", process.ProcessName);
-                while (true)
+                try
                 {
-                    double ram = ramCounter.NextValue();
-                    return Convert.ToInt32(ram / 1024d / 1024d);
+                    Process process = Process.GetProcessById(ProcessId);
+                    PerformanceCounter ramCounter = new("Process", "Working Set", process.ProcessName);
+                    while (true)
+                    {
+                        double ram = ramCounter.NextValue();
+                        return Convert.ToInt32(ram / 1024d / 1024d);
+                    }
+                }
+                catch (Exception)
+                {
+                    return 0;
                 }
             }
             catch

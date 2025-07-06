@@ -9,7 +9,7 @@ namespace TrionControlPanelDesktop.Data
         public static string BackupCDNHost { get => "https://cdn.aclab.tech/"; }
         public static string WebServer { get => "https://flying-phoenix.dev/"; }
         public static string APIServer { get => "https://cdn1.flying-phoenix.dev/"; }
-        public static string Support { get => "https://flying-phoenix.dev/support.php"; }
+        public static string Support { get => "https://buymeacoffee.com/kadeshar"; }
         public class Emulators
         {
             public static string AscEmu { get => "https://github.com/AscEmu/"; }
