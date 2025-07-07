@@ -20,10 +20,10 @@
   "TabSPPTitle": "Single Player Project",
   "TabDDNS": "Dynamic DNS Client",
   "NIconBalloonTipText": "Control Panel for World of Warcraft Emulators!",
-  "NIconBalloonTipTitle": "Trion Control Panel",
-  "NIconText": "Trion Control Panel",
+  "NIconBalloonTipTitle": "Trion Control Panel - AzerothCore Single Player 1.0.2",
+  "NIconText": "Trion Control Panel - AzerothCore Single Player 1.0.2",
   "DatabaseNotRunningErrorMbox": "The database server is not running, do you want to start it?",
-  "TrionFormText": "Trion Control Panel",
+  "TrionFormText": "Trion Control Panel - AzerothCore Single Player 1.0.2",
   //-----------------------------Home Page-----------------------
   "LBLCardMachineResourcesTitle": "machine resources",
   "LBLCardWorldResourcesTitle": "WORLD SERVER RESOURCES",
