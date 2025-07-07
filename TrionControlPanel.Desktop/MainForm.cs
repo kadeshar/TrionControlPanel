@@ -618,17 +618,17 @@ namespace TrionControlPanelDesktop
                 var ServerFilesDatabase = await serverFilesDatabaseTask;
                 var LocalFilesDatabase = await localFilesDatabaseTask;
                 // Compare files and get missing ones
-                var (missingFilesDatabase, filesToDeleteDatabase) = await FileManager.CompareFiles(ServerFilesDatabase, LocalFilesDatabase, "/database", filesToBeDeletedProgress, filesToBeDownloadedProgress);
-                PBARTotalDownload.Maximum = missingFilesDatabase.Count;
+                //var (missingFilesDatabase, filesToDeleteDatabase) = await FileManager.CompareFiles(ServerFilesDatabase, LocalFilesDatabase, "/database", filesToBeDeletedProgress, filesToBeDownloadedProgress);
+                //PBARTotalDownload.Maximum = missingFilesDatabase.Count;
                 // **Download missing files one-by-one**
-                foreach (var file in missingFilesDatabase)
-                {
-                    LBLFileName.Text = string.Format(CultureInfo.InvariantCulture, _translator.Translate("LBLFileName"), $"{file.Name}");
-                    LBLFileSize.Text = string.Format(CultureInfo.InvariantCulture, _translator.Translate("LBLFileSize"), $"{file.Size} MB");
+                //foreach (var file in missingFilesDatabase)
+                //{
+                //    LBLFileName.Text = string.Format(CultureInfo.InvariantCulture, _translator.Translate("LBLFileName"), $"{file.Name}");
+                //    LBLFileSize.Text = string.Format(CultureInfo.InvariantCulture, _translator.Translate("LBLFileSize"), $"{file.Size} MB");
 
-                    await FileManager.DownloadFileAsync(file, "/database", _cancellationToken, downloadProgress, null, downloadSpeedProgress);
-                    PBARTotalDownload.Value++;
-                }
+                //    await FileManager.DownloadFileAsync(file, "/database", _cancellationToken, downloadProgress, null, downloadSpeedProgress);
+                //    PBARTotalDownload.Value++;
+                //}
 
                 InstallFinished();
 
@@ -768,7 +768,7 @@ namespace TrionControlPanelDesktop
         }
         private async void BTNStartDatabase_Click(object sender, EventArgs e)
         {
-            Settings.CreateMySQLConfigFile(Directory.GetCurrentDirectory(), _settings.DBLocation);
+            //Settings.CreateMySQLConfigFile(Directory.GetCurrentDirectory(), _settings.DBLocation);
             SystemData.DatabaseStartTime = DateTime.Now;
             if (!FormData.UI.Form.DBRunning && !FormData.UI.Form.DBStarted)
             {

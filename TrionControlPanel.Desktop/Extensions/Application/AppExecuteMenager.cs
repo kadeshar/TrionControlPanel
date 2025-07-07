@@ -50,7 +50,7 @@ namespace TrionControlPanel.Desktop.Extensions.Application
                     myProcess.StartInfo.WorkingDirectory = workingDirectory;
                     if (arguments != null)
                     {
-                        myProcess.StartInfo.Arguments = arguments;
+                        myProcess.StartInfo.Arguments = "--console";
                     }
                     myProcess.StartInfo.CreateNoWindow = hideWindow;
                     myProcess.Start();

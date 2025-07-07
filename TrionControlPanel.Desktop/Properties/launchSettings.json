@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TrionControlPanel.Desktop": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\BuildLLM\\bin\\Server\\tools\\Trion Control Panel"
+    }
+  }
+}

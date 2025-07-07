@@ -139,7 +139,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TrionLibrary\TrionLibrary.csproj" />
     <ProjectReference Include="..\TrionUI\TrionUI.csproj" />
   </ItemGroup>
 
