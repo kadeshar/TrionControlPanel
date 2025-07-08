@@ -1,20 +1,23 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using MetroFramework;
+using System.Diagnostics;
 using System.Globalization;
-using TrionControlPanel.Desktop.Properties;
+using System.Reflection;
+using TrionControlPanel.Desktop;
+using TrionControlPanel.Desktop.Extensions.Application;
 using TrionControlPanel.Desktop.Extensions.Classes;
 using TrionControlPanel.Desktop.Extensions.Classes.Data.Form;
 using TrionControlPanel.Desktop.Extensions.Classes.Monitor;
+using TrionControlPanel.Desktop.Extensions.Database;
 using TrionControlPanel.Desktop.Extensions.Modules;
 using TrionControlPanel.Desktop.Extensions.Modules.Lists;
-using TrionControlPanelDesktop.Extensions.Modules;
-using static TrionControlPanel.Desktop.Extensions.Modules.Enums;
-using TrionControlPanel.Desktop.Extensions.Application;
-using TrionControlPanel.Desktop.Extensions.Database;
-using System.Diagnostics;
-using static TrionControlPanel.Desktop.Extensions.Notification.AlertBox;
 using TrionControlPanel.Desktop.Extensions.Notification;
-using TrionControlPanel.Desktop;
+using TrionControlPanel.Desktop.Properties;
+using TrionControlPanelDesktop.Extensions.Modules;
+using TrionLibrary.Network;
+using static TrionControlPanel.Desktop.Extensions.Modules.Enums;
+using static TrionControlPanel.Desktop.Extensions.Notification.AlertBox;
 
 namespace TrionControlPanelDesktop
 {
@@ -530,6 +533,7 @@ namespace TrionControlPanelDesktop
         private AppSettings _settings;
         private MaterialSkinManager? materialSkinManager;
         private LoadingScreen loadingForm = new();
+        private bool _websiteRunning = false;
         private int AppPageSize { get; } = 1;
         private int _worldCurrentPage { get; set; } = 1;
         private int _logonCurrentPage { get; set; } = 1;
@@ -1025,7 +1029,7 @@ namespace TrionControlPanelDesktop
 
             // Create progress handlers to ensure UI updates happen on the UI thread
             var serverFilesProgress = new Progress<string>(message => LBLServerFiles.Text = string.Format(CultureInfo.InvariantCulture, _translator.Translate("LBLServerFiles"), message));
-            var localFilesProgress = new Progress<string>(message =>LBLLocalFiles.Text = string.Format(CultureInfo.InvariantCulture, _translator.Translate("LBLLocalFiles"), message));
+            var localFilesProgress = new Progress<string>(message => LBLLocalFiles.Text = string.Format(CultureInfo.InvariantCulture, _translator.Translate("LBLLocalFiles"), message));
             var filesToBeDeletedProgress = new Progress<string>(message => LBLFilesToBeRemoved.Text = string.Format(CultureInfo.InvariantCulture, _translator.Translate("LBLFilesToBeRemoved"), message));
             var filesToBeDownloadedProgress = new Progress<string>(message => LBLFilesToBeDownloaded.Text = string.Format(CultureInfo.InvariantCulture, _translator.Translate("LBLFilesToBeDownloaded"), message));
             var downloadSpeedProgress = new Progress<double>(message => LBLDownloadSpeed.Text = string.Format(CultureInfo.InvariantCulture, _translator.Translate("LBLDownloadSpeed"), $"{message:0.##} MB/s"));
@@ -1346,7 +1350,7 @@ namespace TrionControlPanelDesktop
         private async Task LoadRealmList()
         {
             CBoxGMRealmSelect.Items.Clear();
-            CBOXReamList.Items.Clear(); 
+            CBOXReamList.Items.Clear();
             CBoxGMRealmSelect.Items.Add("All");
             CBoxGMRealmSelect.SelectedIndex = 0;
             try
@@ -1872,5 +1876,28 @@ namespace TrionControlPanelDesktop
             _settings.DBExeName = TXTCustomDatabaseName.Text;
         }
 
+        private async void BTNStartWebsite_Click(object sender, EventArgs e)
+        {
+            if (await Helper.IsPortOpen(80, "127.0.0.1"))
+            {
+                MaterialMessageBox.Show(this, "The port 80 is used! \n You need the port to start the website!", "Warning!", MessageBoxButtons.OK, true, FlexibleMaterialForm.ButtonsPosition.Center);
+                return;
+            }
+
+            if (await Helper.IsPortOpen(443, "127.0.0.1"))
+            {
+                MaterialMessageBox.Show(this, "The port 443 is used! \n You need the port to start the website!", "Warning!", MessageBoxButtons.OK, true, FlexibleMaterialForm.ButtonsPosition.Center);
+                return;
+            }
+
+            _websiteRunning = true;
+
+            await AppExecuteMenager.ApplicationStart(
+                "Website.bat",
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                "Website.bat",
+                true,
+                null);
+        }
     }
 }

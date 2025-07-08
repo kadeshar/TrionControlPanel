@@ -105,6 +105,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MaterialSkin\MaterialSkinCore.csproj" />
+    <ProjectReference Include="..\TrionLibrary\TrionLibrary.csproj" />
     <ProjectReference Include="..\TrionUI\TrionUI.csproj" />
   </ItemGroup>
 

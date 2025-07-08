@@ -52,7 +52,7 @@ namespace TrionControlPanelDesktop
             ExitTSMItem = new ToolStripMenuItem();
             TimerLoadingCheck = new System.Windows.Forms.Timer(components);
             TLTHome = new TrionUI.Controls.CustomToolTip();
-            BTNClean = new UI.Controls.CustomButton();
+            BTNClean = new TrionControlPanelDesktop.UI.Controls.CustomButton();
             TimerCrashDetected = new System.Windows.Forms.Timer(components);
             LayoutPanelMain = new TableLayoutPanel();
             HomeMenuCard = new MaterialSkin.Controls.MaterialCard();
@@ -654,7 +654,6 @@ namespace TrionControlPanelDesktop
             BTNStartWebsite.Cursor = Cursors.Hand;
             BTNStartWebsite.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             BTNStartWebsite.Depth = 0;
-            BTNStartWebsite.Enabled = false;
             BTNStartWebsite.HighEmphasis = true;
             BTNStartWebsite.Icon = (Image)resources.GetObject("BTNStartWebsite.Icon");
             BTNStartWebsite.Location = new Point(784, 16);
@@ -667,6 +666,7 @@ namespace TrionControlPanelDesktop
             BTNStartWebsite.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             BTNStartWebsite.UseAccentColor = false;
             BTNStartWebsite.UseVisualStyleBackColor = true;
+            BTNStartWebsite.Click += BTNStartWebsite_Click;
             // 
             // BTNStartWorld
             // 
