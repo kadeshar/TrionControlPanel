@@ -1896,7 +1896,7 @@ namespace TrionControlPanelDesktop
                 "Website.bat",
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                 "Website.bat",
-                true,
+                false,
                 null);
         }
     }
