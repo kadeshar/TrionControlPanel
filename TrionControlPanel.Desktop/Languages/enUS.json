@@ -24,6 +24,8 @@
   "NIconText": "Trion Control Panel",
   "DatabaseNotRunningErrorMbox": "The database server is not running, do you want to start it?",
   "TrionFormText": "Trion Control Panel",
+  "UnsafeMysqlTurnOffQuestionMbox": "World or Logon server is running. Turning off MySQL can corrupt database. Still do you want turn off MySQL?",
+  "UnsafeMysqlTurnOffQuestionMboxTitle": "Question",
   //-----------------------------Home Page-----------------------
   "LBLCardMachineResourcesTitle": "machine resources",
   "LBLCardWorldResourcesTitle": "WORLD SERVER RESOURCES",

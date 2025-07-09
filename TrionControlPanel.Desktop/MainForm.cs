@@ -777,7 +777,29 @@ namespace TrionControlPanelDesktop
             }
             else
             {
-                await AppExecuteMenager.StopDatabase();
+                var stopDatabase = true;
+
+                if (SystemData.GetWorldProcessesID().Count > 0 || SystemData.GetLogonProcessesID().Count > 0)
+                {
+                    var result = MaterialMessageBox.Show(
+                        this,
+                        _translator.Translate("UnsafeMysqlTurnOffQuestionMbox"),
+                        _translator.Translate("UnsafeMysqlTurnOffQuestionMboxTitle"),
+                        MessageBoxButtons.YesNo,
+                        true,
+                        FlexibleMaterialForm.ButtonsPosition.Center
+                    );
+
+                    if (result == DialogResult.No)
+                    {
+                        stopDatabase = false;
+                    }
+                }
+
+                if (stopDatabase)
+                {
+                    await AppExecuteMenager.StopDatabase();
+                }
             }
         }
         private async void BTNStartLogon_Click(object sender, EventArgs e)
