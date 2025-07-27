@@ -51,7 +51,7 @@ namespace TrionLibrary.Sys
         public static string OSRuinning()
         {
             if (Environment.OSVersion.Platform == PlatformID.Unix) return "Unix";
-            else if (Environment.OSVersion.Platform == PlatformID.Win32NT) return "Widnows";
+            else if (Environment.OSVersion.Platform == PlatformID.Win32NT) return "Windows";
             else return "Unknown";
         }
         public static int MachineTotalRam()
@@ -59,7 +59,7 @@ namespace TrionLibrary.Sys
             double totalRamInMB = 0;
             try
             {
-                if (OSRuinning() == "Widnows")
+                if (OSRuinning() == "Windows")
                 {
                     // Create a new instance of the ManagementClass
                     ManagementClass managementClass = new("Win32_ComputerSystem");
@@ -183,7 +183,7 @@ namespace TrionLibrary.Sys
         }
         public static int CurentPcRamUsage()
         {
-            if (OSRuinning() == "Widnows")
+            if (OSRuinning() == "Windows")
             {
                 try
                 {
