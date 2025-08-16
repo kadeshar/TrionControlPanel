@@ -1,55 +1,24 @@
-CREATE DATABASE IF NOT EXISTS  TrionAPI;
-USE TrionAPI;
+-- Create the database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS `TrionAPI`;
+USE `TrionAPI`;
 
-CREATE TABLE IF NOT EXISTS  DownloadCount (
-    `ID` INT PRIMARY KEY AUTO_INCREMENT,
-    `Count` INT DEFAULT 0,
+-- Create a new MySQL user (replace 'trion_user' and 'StrongPassword123!' as needed)
+CREATE USER IF NOT EXISTS 'trion_user'@'localhost' IDENTIFIED BY 'StrongPassword123!';
+GRANT ALL PRIVILEGES ON `TrionAPI`.* TO 'trion_user'@'localhost';
+FLUSH PRIVILEGES;
+
+-- Create table for download counts
+CREATE TABLE IF NOT EXISTS `DownloadCount` (
+    `ID` INT AUTO_INCREMENT PRIMARY KEY,
     `Name` VARCHAR(255) NOT NULL,
-    UID VARCHAR(255) NOT NULL
+    `UID` VARCHAR(255) NOT NULL,
+    `Count` INT DEFAULT 0,
+    UNIQUE KEY `unique_name_uid` (`Name`, `UID`)
 );
 
-CREATE TABLE IF NOT EXISTS Clients (
-    `ID` INT PRIMARY KEY AUTO_INCREMENT,
-    `UUID` VARCHAR(255) UNIQUE NOT NULL,
-    `Specs` TEXT,
-    `LastOnline` DATETIME,
-    `OnlineStatus` BOOLEAN DEFAULT FALSE
-);
-
-CREATE TABLE IF NOT EXISTS Blog (
-    `ID` INT PRIMARY KEY AUTO_INCREMENT,
-    `Title` VARCHAR(255) NOT NULL,
-    `Image` VARCHAR(255),
-    `Content` TEXT NOT NULL,
-    `CreatedAt` DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS SupporterKey (
-    `ID` INT PRIMARY KEY AUTO_INCREMENT,
-    `Key` VARCHAR(255) NOT NULL,
-    `UID` VARCHAR(255) NOT NULL
-);
-CREATE TABLE IF NOT EXISTS IPAddresses (
-    `ID` INT PRIMARY KEY AUTO_INCREMENT,
-    `UserID` INT,
-    `IPAddress` VARCHAR(45) NOT NULLUsers
-);
-CREATE TABLE IF NOT EXISTS Users (
-    `UserID` INT PRIMARY KEY AUTO_INCREMENT,
-    `Username` VARCHAR(255) NOT NULL,
-    `Email` VARCHAR(255) UNIQUE NOT NULL,
-    `Password` VARCHAR(255) NOT NULL,
-    `IPAddressID`INT,
-    `SupporterKeyID` INT,
-    `LastLogin` DATETIME,
-    FOREIGN KEY (`IPAddressID`) REFERENCES `IPAddresses`(`ID`),
-    FOREIGN KEY (`SupporterKeyID`) REFERENCES `SupporterKey`(`ID`)
-);
-
-CREATE TABLE IF NOT EXISTS BlogLikes (
-    `ID` INT PRIMARY KEY AUTO_INCREMENT,
-    `BlogID` INT,
-    `UserID` INT,
-    FOREIGN KEY (`BlogID`) REFERENCES `Blog`(`ID`) ON DELETE CASCADE,
-    FOREIGN KEY (`UserID`) REFERENCES `Users`(`UserID`) ON DELETE CASCADE
+-- Create table for supporter keys
+CREATE TABLE IF NOT EXISTS `SupporterKey` (
+    `ID` INT AUTO_INCREMENT PRIMARY KEY,
+    `ApiKey` VARCHAR(255) NOT NULL UNIQUE,
+    `UID` BIGINT NOT NULL
 );

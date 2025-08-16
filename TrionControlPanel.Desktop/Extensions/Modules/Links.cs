@@ -1,11 +1,11 @@
 ﻿using TrionControlPanel.Desktop.Extensions.Modules;
-using static Mysqlx.Expect.Open.Types.Condition.Types;
+
 
 namespace TrionControlPanelDesktop.Extensions.Modules
 {
     public class Links
     {
-        public static string MainHost { get => "https://api.aclab.tech"; }
+        public static string MainHost { get => "https://api.flying-phoenix.dev"; }
         public static string BackupHost { get => "http://localhost:5000"; }
         public static string APIServer { get; set; }
         public static string WebServer { get => "https://flying-phoenix.dev/"; }
@@ -13,15 +13,25 @@ namespace TrionControlPanelDesktop.Extensions.Modules
         public static string Discord { get => "https://discord.gg/By4nkETRXS"; }
         public class APIRequests
         {
-            public static string DownlaodFiles()
+            public static string InstallSPP(string Emulator, string key)
             {
                 var url = APIServer;
-                return $"{url}/Trion/DownloadFile";
+                return $"{url}/Trion/InstallSPP?Emulator={Emulator}&Key={key}";
             }
-            public static string GetServerFiles(string Emulator, string key)
+            public static string DownlaodFiles(string emulator, string key)
             {
                 var url = APIServer;
-                return $"{url}/Trion/GetServerFiles?Emulator={Emulator}&Key={key}";
+                return $"{url}/Trion/DownloadFile?Emulator={Uri.EscapeDataString(emulator)}&Key={Uri.EscapeDataString(key)}";
+            }
+            public static string GetInstallFiles(string Emulator, string key)
+            {
+                var url = APIServer;
+                return $"{url}/Trion/InstallSPP?Emulator={Emulator}&Key={key}";
+            }
+            public static string GetReapirFiles(string Emulator, string key)
+            {
+                var url = APIServer;
+                return $"{url}/Trion/RepairSPP?Emulator={Emulator}&Key={key}";
             }
             public static string GetSPPVersion(string key)
             {

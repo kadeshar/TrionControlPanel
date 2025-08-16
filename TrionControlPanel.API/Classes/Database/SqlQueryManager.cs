@@ -2,6 +2,7 @@
 {
     public class SqlQueryManager
     {
-        public static string SELECT_SUPPORT_KEY = "SELECT COUNT(`Key`) FROM `SupporterKey` WHERE `Key` = @Key";
+        public static string SELECT_SUPPORT_KEY => "SELECT EXISTS(SELECT 1 FROM SupporterKey WHERE `ApiKey` = @ApiKey)";
+        public static string INSERT_SUPPORT_KEY => "INSERT INTO SupporterKey (`ApiKey`, `UID`) VALUES (@ApiKey, @UID);";
     }
 }

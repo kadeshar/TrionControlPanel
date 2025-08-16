@@ -5,8 +5,6 @@ VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrionLibrary", "TrionLibrary\TrionLibrary.csproj", "{4DCEB99D-006C-4343-B708-D3C72B7D11BF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrionDiscordBot", "TrionDiscordBot\TrionDiscordBot.csproj", "{68FBCEFA-3B05-4CF2-851F-7797B0D508C9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrionControlPanel.Desktop", "TrionControlPanel.Desktop\TrionControlPanel.Desktop.csproj", "{0B2EDB3E-28F2-4FE0-AB20-603217B1FE80}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrionWorker", "TrionWorker\TrionWorker.csproj", "{F8532926-479A-4016-9987-E854512180CA}"
@@ -18,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrionControlPanel.API", "TrionControlPanel.API\TrionControlPanel.API.csproj", "{98CB680D-92EF-449B-A8D5-104BC0EBBD79}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrionUI", "TrionUI\TrionUI.csproj", "{7CC87303-53AB-4F55-A388-59C965B187D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trion.WebPage", "Trion.WebPage\Trion.WebPage.csproj", "{FD4EFC97-ADD6-46D1-BEB4-1131DFFBBF9F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B3EE335A-F598-42D6-AD70-4B143FDC95BA}"
 	ProjectSection(SolutionItems) = preProject
@@ -40,14 +40,6 @@ Global
 		{4DCEB99D-006C-4343-B708-D3C72B7D11BF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4DCEB99D-006C-4343-B708-D3C72B7D11BF}.Release|x64.ActiveCfg = Release|Any CPU
 		{4DCEB99D-006C-4343-B708-D3C72B7D11BF}.Release|x64.Build.0 = Release|Any CPU
-		{68FBCEFA-3B05-4CF2-851F-7797B0D508C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{68FBCEFA-3B05-4CF2-851F-7797B0D508C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{68FBCEFA-3B05-4CF2-851F-7797B0D508C9}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{68FBCEFA-3B05-4CF2-851F-7797B0D508C9}.Debug|x64.Build.0 = Debug|Any CPU
-		{68FBCEFA-3B05-4CF2-851F-7797B0D508C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{68FBCEFA-3B05-4CF2-851F-7797B0D508C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{68FBCEFA-3B05-4CF2-851F-7797B0D508C9}.Release|x64.ActiveCfg = Release|Any CPU
-		{68FBCEFA-3B05-4CF2-851F-7797B0D508C9}.Release|x64.Build.0 = Release|Any CPU
 		{0B2EDB3E-28F2-4FE0-AB20-603217B1FE80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B2EDB3E-28F2-4FE0-AB20-603217B1FE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B2EDB3E-28F2-4FE0-AB20-603217B1FE80}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -95,6 +87,14 @@ Global
 		{7CC87303-53AB-4F55-A388-59C965B187D9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CC87303-53AB-4F55-A388-59C965B187D9}.Release|x64.ActiveCfg = Release|Any CPU
 		{7CC87303-53AB-4F55-A388-59C965B187D9}.Release|x64.Build.0 = Release|Any CPU
+		{FD4EFC97-ADD6-46D1-BEB4-1131DFFBBF9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD4EFC97-ADD6-46D1-BEB4-1131DFFBBF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD4EFC97-ADD6-46D1-BEB4-1131DFFBBF9F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FD4EFC97-ADD6-46D1-BEB4-1131DFFBBF9F}.Debug|x64.Build.0 = Debug|Any CPU
+		{FD4EFC97-ADD6-46D1-BEB4-1131DFFBBF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD4EFC97-ADD6-46D1-BEB4-1131DFFBBF9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD4EFC97-ADD6-46D1-BEB4-1131DFFBBF9F}.Release|x64.ActiveCfg = Release|Any CPU
+		{FD4EFC97-ADD6-46D1-BEB4-1131DFFBBF9F}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

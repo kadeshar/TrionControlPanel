@@ -1,4 +1,6 @@
-﻿namespace TrionControlPanel.API.Classes.Lists
+﻿using System.Numerics;
+
+namespace TrionControlPanel.API.Classes.Lists
 {
     public class FileList
     {
@@ -13,5 +15,11 @@
     public class FileRequest
     {
         public string FilePath { get; set; }
+    }
+    public class SupporterKey
+    {
+        public int ID { get; set; }
+        public string Key { get; set; }
+        public long UID { get; set; }
     }
 }

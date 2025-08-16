@@ -352,7 +352,7 @@ namespace TrionControlPanelDesktop
             materialCard24 = new MaterialSkin.Controls.MaterialCard();
             pictureBox2 = new PictureBox();
             LBLServerFiles = new MaterialSkin.Controls.MaterialLabel();
-            materialCard23 = new MaterialSkin.Controls.MaterialCard();
+            CardLocalFiles = new MaterialSkin.Controls.MaterialCard();
             pictureBox1 = new PictureBox();
             LBLLocalFiles = new MaterialSkin.Controls.MaterialLabel();
             materialCard12 = new MaterialSkin.Controls.MaterialCard();
@@ -362,6 +362,7 @@ namespace TrionControlPanelDesktop
             TimerUpdate = new System.Windows.Forms.Timer(components);
             TimerPanelAnimation = new System.Windows.Forms.Timer(components);
             ImageListIcons = new ImageList(components);
+            BTNShowSupport = new MaterialSkin.Controls.MaterialButton();
             CMSNotify.SuspendLayout();
             LayoutPanelMain.SuspendLayout();
             HomeMenuCard.SuspendLayout();
@@ -473,7 +474,7 @@ namespace TrionControlPanelDesktop
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             materialCard24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            materialCard23.SuspendLayout();
+            CardLocalFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -1921,6 +1922,7 @@ namespace TrionControlPanelDesktop
             // materialCard14
             // 
             materialCard14.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard14.Controls.Add(BTNShowSupport);
             materialCard14.Controls.Add(BTNUninstallSPP);
             materialCard14.Controls.Add(BTNRepairSPP);
             materialCard14.Controls.Add(BTNInstallSPP);
@@ -3199,6 +3201,7 @@ namespace TrionControlPanelDesktop
             BTNAccountCreate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             BTNAccountCreate.UseAccentColor = false;
             BTNAccountCreate.UseVisualStyleBackColor = true;
+            BTNAccountCreate.Click += BTNAccountCreate_Click;
             // 
             // TXTBoxCreateUserEmail
             // 
@@ -3249,7 +3252,7 @@ namespace TrionControlPanelDesktop
             TXTBoxCreateUserPassword.MaxLength = 32767;
             TXTBoxCreateUserPassword.MouseState = MaterialSkin.MouseState.OUT;
             TXTBoxCreateUserPassword.Name = "TXTBoxCreateUserPassword";
-            TXTBoxCreateUserPassword.PasswordChar = '\0';
+            TXTBoxCreateUserPassword.PasswordChar = '*';
             TXTBoxCreateUserPassword.PrefixSuffixText = null;
             TXTBoxCreateUserPassword.ReadOnly = false;
             TXTBoxCreateUserPassword.RightToLeft = RightToLeft.No;
@@ -5056,6 +5059,7 @@ namespace TrionControlPanelDesktop
             BTNFixDatabase.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             BTNFixDatabase.UseAccentColor = false;
             BTNFixDatabase.UseVisualStyleBackColor = true;
+            BTNFixDatabase.Click += BTNFixDatabase_Click;
             // 
             // BTNLoadBackup
             // 
@@ -5205,6 +5209,7 @@ namespace TrionControlPanelDesktop
             TGLCustomDB.TabIndex = 17;
             TGLCustomDB.Text = "custom";
             TGLCustomDB.UseVisualStyleBackColor = true;
+            TGLCustomDB.CheckedChanged += TGLCustomDB_CheckedChanged;
             // 
             // TGLMopDB
             // 
@@ -5220,6 +5225,7 @@ namespace TrionControlPanelDesktop
             TGLMopDB.TabIndex = 16;
             TGLMopDB.Text = "mop";
             TGLMopDB.UseVisualStyleBackColor = true;
+            TGLMopDB.CheckedChanged += TGLMopDB_CheckedChanged;
             // 
             // TGLCataDB
             // 
@@ -5235,6 +5241,7 @@ namespace TrionControlPanelDesktop
             TGLCataDB.TabIndex = 15;
             TGLCataDB.Text = "cata";
             TGLCataDB.UseVisualStyleBackColor = true;
+            TGLCataDB.CheckedChanged += TGLCataDB_CheckedChanged;
             // 
             // TGLWotlkDB
             // 
@@ -5250,6 +5257,7 @@ namespace TrionControlPanelDesktop
             TGLWotlkDB.TabIndex = 14;
             TGLWotlkDB.Text = "wotlk";
             TGLWotlkDB.UseVisualStyleBackColor = true;
+            TGLWotlkDB.CheckedChanged += TGLWotlkDB_CheckedChanged;
             // 
             // TGLTbcDB
             // 
@@ -5265,6 +5273,7 @@ namespace TrionControlPanelDesktop
             TGLTbcDB.TabIndex = 13;
             TGLTbcDB.Text = "tbc";
             TGLTbcDB.UseVisualStyleBackColor = true;
+            TGLTbcDB.CheckedChanged += TGLTbcDB_CheckedChanged;
             // 
             // TGLClassicDB
             // 
@@ -5281,6 +5290,7 @@ namespace TrionControlPanelDesktop
             TGLClassicDB.TabIndex = 12;
             TGLClassicDB.Text = "classic";
             TGLClassicDB.UseVisualStyleBackColor = true;
+            TGLClassicDB.CheckedChanged += TGLClassicDB_CheckedChanged;
             // 
             // LBLCardPreconfiguredDBInfo
             // 
@@ -5900,7 +5910,7 @@ namespace TrionControlPanelDesktop
             materialCard21.Controls.Add(DLCardRemoweFiles);
             materialCard21.Controls.Add(materialCard25);
             materialCard21.Controls.Add(materialCard24);
-            materialCard21.Controls.Add(materialCard23);
+            materialCard21.Controls.Add(CardLocalFiles);
             materialCard21.Depth = 0;
             materialCard21.ForeColor = Color.FromArgb(222, 0, 0, 0);
             materialCard21.Location = new Point(27, 97);
@@ -6107,7 +6117,6 @@ namespace TrionControlPanelDesktop
             INITSpinner.Style = MetroFramework.MetroColorStyle.Blue;
             INITSpinner.StyleManager = null;
             INITSpinner.TabIndex = 22;
-            INITSpinner.Text = "metroProgressSpinner1";
             INITSpinner.Theme = MetroFramework.MetroThemeStyle.Dark;
             INITSpinner.Value = 90;
             INITSpinner.Visible = false;
@@ -6211,20 +6220,20 @@ namespace TrionControlPanelDesktop
             LBLServerFiles.TabIndex = 0;
             LBLServerFiles.Text = "Server Files:";
             // 
-            // materialCard23
+            // CardLocalFiles
             // 
-            materialCard23.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard23.Controls.Add(pictureBox1);
-            materialCard23.Controls.Add(LBLLocalFiles);
-            materialCard23.Depth = 0;
-            materialCard23.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard23.Location = new Point(21, 18);
-            materialCard23.Margin = new Padding(14);
-            materialCard23.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCard23.Name = "materialCard23";
-            materialCard23.Padding = new Padding(14);
-            materialCard23.Size = new Size(325, 40);
-            materialCard23.TabIndex = 14;
+            CardLocalFiles.BackColor = Color.FromArgb(255, 255, 255);
+            CardLocalFiles.Controls.Add(pictureBox1);
+            CardLocalFiles.Controls.Add(LBLLocalFiles);
+            CardLocalFiles.Depth = 0;
+            CardLocalFiles.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            CardLocalFiles.Location = new Point(21, 18);
+            CardLocalFiles.Margin = new Padding(14);
+            CardLocalFiles.MouseState = MaterialSkin.MouseState.HOVER;
+            CardLocalFiles.Name = "CardLocalFiles";
+            CardLocalFiles.Padding = new Padding(14);
+            CardLocalFiles.Size = new Size(325, 40);
+            CardLocalFiles.TabIndex = 14;
             // 
             // pictureBox1
             // 
@@ -6300,6 +6309,28 @@ namespace TrionControlPanelDesktop
             ImageListIcons.Images.SetKeyName(0, "Trion New Logo");
             ImageListIcons.Images.SetKeyName(1, "Trion Logo By GHz83");
             ImageListIcons.Images.SetKeyName(2, "Trion old Logo");
+            // 
+            // BTNShowSupport
+            // 
+            BTNShowSupport.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            BTNShowSupport.AutoSize = false;
+            BTNShowSupport.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BTNShowSupport.Cursor = Cursors.Hand;
+            BTNShowSupport.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            BTNShowSupport.Depth = 0;
+            BTNShowSupport.HighEmphasis = true;
+            BTNShowSupport.Icon = (Image)resources.GetObject("BTNShowSupport.Icon");
+            BTNShowSupport.Location = new Point(9, 229);
+            BTNShowSupport.Margin = new Padding(4, 6, 4, 6);
+            BTNShowSupport.MouseState = MaterialSkin.MouseState.HOVER;
+            BTNShowSupport.Name = "BTNShowSupport";
+            BTNShowSupport.NoAccentTextColor = Color.Empty;
+            BTNShowSupport.Size = new Size(341, 36);
+            BTNShowSupport.TabIndex = 17;
+            BTNShowSupport.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            BTNShowSupport.UseAccentColor = false;
+            BTNShowSupport.UseVisualStyleBackColor = true;
+            BTNShowSupport.Click += BTNShowSupport_Click;
             // 
             // MainForm
             // 
@@ -6470,8 +6501,8 @@ namespace TrionControlPanelDesktop
             materialCard24.ResumeLayout(false);
             materialCard24.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            materialCard23.ResumeLayout(false);
-            materialCard23.PerformLayout();
+            CardLocalFiles.ResumeLayout(false);
+            CardLocalFiles.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
@@ -6790,7 +6821,7 @@ namespace TrionControlPanelDesktop
         private MaterialSkin.Controls.MaterialCard materialCard24;
         private PictureBox pictureBox2;
         private MaterialSkin.Controls.MaterialLabel LBLServerFiles;
-        private MaterialSkin.Controls.MaterialCard materialCard23;
+        private MaterialSkin.Controls.MaterialCard CardLocalFiles;
         private PictureBox pictureBox1;
         private MaterialSkin.Controls.MaterialLabel LBLLocalFiles;
         private MaterialSkin.Controls.MaterialCard materialCard12;
@@ -6799,5 +6830,6 @@ namespace TrionControlPanelDesktop
         private MaterialSkin.Controls.MaterialProgressBar PBarCurrentDownlaod;
         private MaterialSkin.Controls.MaterialProgressBar PBARTotalDownload;
         private MetroFramework.Controls.MetroProgressSpinner INITSpinner;
+        private MaterialSkin.Controls.MaterialButton BTNShowSupport;
     }
 }

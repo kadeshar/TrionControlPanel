@@ -4,7 +4,7 @@ namespace TrionControlPanel.API.Classes
     public class TrionLogger
     {
         private static readonly object _lock = new(); // Lock object for thread safety.
-        private static string _logFilePath = "logs/trion/Trion.logs"; // Default log file path.
+        private static string _logFilePath = "logs/Trion.logs"; // Default log file path.
 
         // Sets the log file path.
         public static void SetLogFilePath(string logFilePath)

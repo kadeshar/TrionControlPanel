@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Diagnostics;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -8,7 +7,7 @@ using TrionControlPanel.Desktop.Extensions.Classes.Monitor;
 using TrionControlPanel.Desktop.Extensions.Modules.Lists;
 using TrionControlPanelDesktop.Extensions.Modules;
 
-namespace TrionControlPanel.Desktop.Extensions.Classes
+namespace TrionControlPanel.Desktop.Extensions.Classes.Network
 {
 
     // NetworkManager class for handling network-related operations.
@@ -17,9 +16,20 @@ namespace TrionControlPanel.Desktop.Extensions.Classes
         // Sets the API server URL based on the availability of the main and backup hosts.
         public static async Task GetAPIServer()
         {
-            if (await IsWebsiteOnlineAsync($"{Links.MainHost}/Trion/GetWebsitePing")) { Links.APIServer = Links.MainHost; }
-            if (await IsWebsiteOnlineAsync($"{Links.BackupHost}/Trion/GetWebsitePing")) { Links.APIServer = Links.BackupHost; }
-            else { Links.APIServer = Links.MainHost; }
+            var main = await IsWebsiteOnlineAsync($"{Links.MainHost}/Trion/Ping");
+            if (main)
+            {
+                Links.APIServer = Links.MainHost;
+                return;
+            }
+            var backup = await IsWebsiteOnlineAsync($"{Links.BackupHost}/Trion/Ping");
+            if (backup)
+            {
+                Links.APIServer = Links.BackupHost;
+                return;
+            }
+
+             Links.APIServer = null!; 
         }
 
         // Checks if the input string is a valid domain name.
@@ -181,49 +191,46 @@ namespace TrionControlPanel.Desktop.Extensions.Classes
             return false;
         }
 
-        // Downloads a speed test file to measure download speed.
-        public static async Task DownlaodSeppd(CancellationToken cancellationToken = default)
+        /// <summary>
+        /// Performs a full speed test (latency and download) against the API
+        /// and logs the results.
+        /// </summary>
+        public static async Task DownlaodSpeed(string url, int downloadSizeMB)
         {
-            string apiUrl = "https://localhost:7107/Trion/DownloadSpeed"; // Replace with your actual server URL
+            TrionLogger.Log("Starting speed test...");
 
-            using HttpClient client = new();
-            client.Timeout = TimeSpan.FromMinutes(1); // Ensure enough time
-
-            byte[] buffer = new byte[4 * 1024 * 1024]; // 4 MB buffer
-            long totalBytesRead = 0;
-            int bytesRead;
+            //Create an instance of our new service.
+            var speedTester = new SpeedTestService(url);
 
             try
             {
-                using HttpResponseMessage response = await client.GetAsync(apiUrl, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
-                response.EnsureSuccessStatusCode();
+                //  Run the test.
+                SpeedTestResult result = await speedTester.RunTestAsync(downloadSizeMB);
 
-                using var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
-                Stopwatch stopwatch = Stopwatch.StartNew();
-
-                while (!cancellationToken.IsCancellationRequested && (bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken)) > 0)
+                // 3. Log the results from the result object.
+                if (!string.IsNullOrEmpty(result.ErrorMessage))
                 {
-                    totalBytesRead += bytesRead;
+                    // The service already caught an error, so we just log it.
+                    TrionLogger.Log($"Speed test failed: {result.ErrorMessage}", "ERROR");
                 }
-
-                stopwatch.Stop();
-                double elapsedSeconds = stopwatch.Elapsed.TotalSeconds;
-                double speedMbps = (totalBytesRead * 8) / (elapsedSeconds * 1_000_000); // Convert to Mbps
-
-                TrionLogger.Log($"Downloaded {totalBytesRead / (1024.0 * 1024.0):F2} MB in {elapsedSeconds:F2} seconds.");
-                TrionLogger.Log($"Estimated Download Speed: {speedMbps:F2} Mbps");
+                else
+                {
+                    // Log the successful results.
+                    TrionLogger.Log($"Latency (TTFB): {result.LatencyMs} ms");
+                    TrionLogger.Log($"Download Speed: {result.DownloadSpeedMbps:F2} Mbps");
+                    TrionLogger.Log("Speed test completed successfully.");
+                }
             }
             catch (OperationCanceledException)
             {
-                TrionLogger.Log("Speed test stopped after 4 seconds.");
-            }
-            catch (HttpRequestException ex)
-            {
-                TrionLogger.Log($"HTTP request error: {ex.Message}", "ERROR");
+                // This will be caught if the cancellationToken is triggered
+                // while the test is running.
+                TrionLogger.Log("Speed test was canceled by the user.", "INFO");
             }
             catch (Exception ex)
             {
-                TrionLogger.Log($"Error: {ex.Message}", "ERROR");
+                // Catch any other unexpected errors during the test setup or execution.
+                TrionLogger.Log($"An unexpected error occurred during the speed test: {ex.Message}", "ERROR");
             }
         }
 
