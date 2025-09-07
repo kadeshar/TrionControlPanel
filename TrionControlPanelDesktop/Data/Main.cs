@@ -706,23 +706,30 @@ namespace TrionControlPanelDesktop.Data
                 User.UI.Form.MOPLogonRunning = false;
             }
         }
-        public static async Task DatabaseRunIDCHeck(string ExecutableDirecotry, string ExecutableName)
+        public static async Task DatabaseRunIDCheck(string ExecutableDirecotry, string ExecutableName)
         {
             await Task.Delay(1000);
             Process[] process = Process.GetProcessesByName(ExecutableName);
             foreach (Process proc in process)
             {
-                if (Path.GetDirectoryName(proc.MainModule!.FileName) == ExecutableDirecotry && User.System.DatabaseProcessID.Count > 0)
+                try
                 {
-                    if (User.System.DatabaseProcessID.Any(current => current.ID != proc.Id))
+                    if (Path.GetDirectoryName(proc.MainModule!.FileName) == ExecutableDirecotry && User.System.DatabaseProcessID.Count > 0)
                     {
-                        var NewProcessID = new Lists.ProcessID
+                        if (User.System.DatabaseProcessID.Any(current => current.ID != proc.Id))
                         {
-                            ID = proc.Id,
-                            Name = "DB2"
-                        };
-                        User.System.DatabaseProcessID.Add(NewProcessID);
+                            var NewProcessID = new Lists.ProcessID
+                            {
+                                ID = proc.Id,
+                                Name = "DB2"
+                            };
+                            User.System.DatabaseProcessID.Add(NewProcessID);
+                        }
                     }
+                }
+                catch
+                {
+                    // ignore because that means no access to the process
                 }
             }
         }

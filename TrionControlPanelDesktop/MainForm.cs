@@ -246,7 +246,7 @@ namespace TrionControlPanelDesktop
                 Setting.CreateMySQLConfigFile(Directory.GetCurrentDirectory());
                 string arg = $"--defaults-file=\"{Directory.GetCurrentDirectory()}/my.ini\" --console";
                 await Main.StartDatabase(arg);
-                await Main.DatabaseRunIDCHeck(Setting.List.DBWorkingDir, Setting.List.DBExeName);
+                await Main.DatabaseRunIDCheck(Setting.List.DBWorkingDir, Setting.List.DBExeName);
             }
             else
             {
