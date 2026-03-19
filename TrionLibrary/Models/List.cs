@@ -100,6 +100,7 @@ namespace TrionLibrary.Models
             public int BackupIntervalDays;
             public string BackupDatabaseLocation;
             public string BackupFolder;
+            public int BackupRetentionCount;
             public string LastBackupDate;
             //DDNS Settings
             public string DDNSDomain;

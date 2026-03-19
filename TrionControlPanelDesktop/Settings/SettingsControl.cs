@@ -26,6 +26,7 @@ namespace TrionControlPanelDesktop.Controls
         private MetroFramework.Controls.MetroTextBox TXTBackupIntervalDays;
         private MetroFramework.Controls.MetroTextBox TXTBackupDatabaseLocation;
         private MetroFramework.Controls.MetroTextBox TXTBackupFolder;
+        private MetroFramework.Controls.MetroTextBox TXTBackupRetentionCount;
         private Label LBLLastBackupDate;
         private void InitializeBackupTab()
         {
@@ -148,6 +149,24 @@ namespace TrionControlPanelDesktop.Controls
 
             yPos += 40;
 
+            var lblBackupRetention = new Label();
+            lblBackupRetention.Text = "Keep Latest Backups:";
+            lblBackupRetention.ForeColor = Color.White;
+            lblBackupRetention.Location = new Point(10, yPos);
+            lblBackupRetention.AutoSize = true;
+            panelBackup.Controls.Add(lblBackupRetention);
+
+            TXTBackupRetentionCount = new MetroFramework.Controls.MetroTextBox();
+            TXTBackupRetentionCount.Location = new Point(250, yPos - 3);
+            TXTBackupRetentionCount.Size = new Size(80, 25);
+            TXTBackupRetentionCount.Style = MetroFramework.MetroColorStyle.Blue;
+            TXTBackupRetentionCount.Theme = MetroFramework.MetroThemeStyle.Dark;
+            TXTBackupRetentionCount.UseStyleColors = true;
+            TXTBackupRetentionCount.Leave += TXTBackupRetentionCount_Leave;
+            panelBackup.Controls.Add(TXTBackupRetentionCount);
+
+            yPos += 40;
+
             // Last Backup Date
             var lblLastBackup = new Label();
             lblLastBackup.Text = "Last Backup:";
@@ -172,6 +191,7 @@ namespace TrionControlPanelDesktop.Controls
             TXTBackupIntervalDays.Text = Setting.List.BackupIntervalDays.ToString();
             TXTBackupDatabaseLocation.Text = Setting.List.BackupDatabaseLocation ?? "N/A";
             TXTBackupFolder.Text = Setting.List.BackupFolder ?? "N/A";
+            TXTBackupRetentionCount.Text = Setting.List.BackupRetentionCount.ToString();
 
             if (!string.IsNullOrEmpty(Setting.List.LastBackupDate) &&
                 DateTime.TryParse(Setting.List.LastBackupDate, out DateTime lastBackup))
@@ -196,6 +216,18 @@ namespace TrionControlPanelDesktop.Controls
             else
             {
                 TXTBackupIntervalDays.Text = Setting.List.BackupIntervalDays.ToString();
+            }
+        }
+        private async void TXTBackupRetentionCount_Leave(object sender, EventArgs e)
+        {
+            if (int.TryParse(TXTBackupRetentionCount.Text, out int retentionCount) && retentionCount > 0)
+            {
+                Setting.List.BackupRetentionCount = retentionCount;
+                await Setting.Save();
+            }
+            else
+            {
+                TXTBackupRetentionCount.Text = Setting.List.BackupRetentionCount.ToString();
             }
         }
         private async void BTNBrowseBackupDbLocation_Click(object sender, EventArgs e)

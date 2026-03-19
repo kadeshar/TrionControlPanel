@@ -51,6 +51,7 @@ namespace TrionLibrary.Setting
                 List.BackupIntervalDays = 7;
                 List.BackupDatabaseLocation = "..\\..\\mysql";
                 List.BackupFolder = "..\\..\\backups";
+                List.BackupRetentionCount = 10;
                 List.LastBackupDate = "2026-01-01";
                 List.ConsolHide = false;
                 List.StayInTray = false;
@@ -98,6 +99,11 @@ namespace TrionLibrary.Setting
                 {
                     CreateSettingsFile(true);
                     List = ReaderData(SettingsDataFile);
+                }
+
+                if (List.BackupRetentionCount <= 0)
+                {
+                    List.BackupRetentionCount = 10;
                 }
             }
             catch (Exception ex)

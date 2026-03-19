@@ -74,6 +74,8 @@ namespace TrionLibrary.Database
                     });
                 }
 
+                DeleteOldBackups(backupFolder, Setting.Setting.List.BackupRetentionCount);
+
                 Setting.Setting.List.LastBackupDate = DateTime.Now.ToString("o");
                 await Setting.Setting.Save();
 
@@ -186,6 +188,35 @@ namespace TrionLibrary.Database
             }
 
             return string.Empty;
+        }
+
+        private static void DeleteOldBackups(string backupFolder, int retentionCount)
+        {
+            if (retentionCount <= 0 || !Directory.Exists(backupFolder))
+            {
+                return;
+            }
+
+            FileInfo[] backupFiles = new DirectoryInfo(backupFolder)
+                .GetFiles("Backup_*.*", SearchOption.TopDirectoryOnly)
+                .Where(file => file.Extension.Equals(".7z", StringComparison.OrdinalIgnoreCase)
+                    || file.Extension.Equals(".zip", StringComparison.OrdinalIgnoreCase))
+                .OrderByDescending(file => file.CreationTimeUtc)
+                .ThenByDescending(file => file.Name)
+                .ToArray();
+
+            foreach (FileInfo file in backupFiles.Skip(retentionCount))
+            {
+                try
+                {
+                    file.Delete();
+                    Infos.Message = $"Deleted old backup: {file.Name}";
+                }
+                catch (Exception ex)
+                {
+                    Infos.Message = $"Failed to delete old backup '{file.Name}': {ex.Message}";
+                }
+            }
         }
     }
 }
