@@ -17,5 +17,10 @@ namespace TrionControlPanelDesktop.Controls
             Dock = DockStyle.Fill;
             InitializeComponent();
         }
+        public string LoadingText
+        {
+            get => label1.Text;
+            set => label1.Text = value;
+        }
     }
 }

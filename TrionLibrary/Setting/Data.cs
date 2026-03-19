@@ -47,6 +47,11 @@ namespace TrionLibrary.Setting
                 List.IPAddress = "127.0.0.1";
                 List.ServerCrashDetection = false;
                 List.NotificationSound = true;
+                List.BackupEnabled = true;
+                List.BackupIntervalDays = 7;
+                List.BackupDatabaseLocation = "..\\..\\mysql";
+                List.BackupFolder = "..\\..\\backups";
+                List.LastBackupDate = "2026-01-01";
                 List.ConsolHide = false;
                 List.StayInTray = false;
                 List.RunWithWindows = false;

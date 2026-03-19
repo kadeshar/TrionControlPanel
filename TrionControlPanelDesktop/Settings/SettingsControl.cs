@@ -20,6 +20,203 @@ namespace TrionControlPanelDesktop.Controls
             Dock = DockStyle.Fill;
             InitializeComponent();
             _syncContext = SynchronizationContext.Current!;
+            InitializeBackupTab();
+        }
+        private TrionControlPanel.UI.CustomToggleButton TGLBackupEnabled;
+        private MetroFramework.Controls.MetroTextBox TXTBackupIntervalDays;
+        private MetroFramework.Controls.MetroTextBox TXTBackupDatabaseLocation;
+        private MetroFramework.Controls.MetroTextBox TXTBackupFolder;
+        private Label LBLLastBackupDate;
+        private void InitializeBackupTab()
+        {
+            var tabPageBackup = new TabPage();
+            tabPageBackup.BackColor = Color.FromArgb(45, 51, 59);
+            tabPageBackup.Location = new Point(4, 34);
+            tabPageBackup.Name = "TabPageBackup";
+            tabPageBackup.Size = new Size(837, 332);
+            tabPageBackup.Text = "Backup";
+            tabPageBackup.ToolTipText = "View the database backup settings";
+
+            var panelBackup = new MetroFramework.Controls.MetroPanel();
+            panelBackup.BackColor = Color.FromArgb(28, 33, 40);
+            panelBackup.Border = true;
+            panelBackup.BorderColor = Color.Black;
+            panelBackup.BorderSize = 1;
+            panelBackup.CustomBackground = true;
+            panelBackup.HorizontalScrollbar = false;
+            panelBackup.VerticalScrollbar = false;
+            panelBackup.Location = new Point(6, 6);
+            panelBackup.Size = new Size(825, 320);
+            panelBackup.Style = MetroFramework.MetroColorStyle.Blue;
+            panelBackup.Theme = MetroFramework.MetroThemeStyle.Dark;
+
+            int yPos = 10;
+
+            // Enable Backup toggle
+            var lblBackupEnabled = new Label();
+            lblBackupEnabled.Text = "Enable Backup Prompt:";
+            lblBackupEnabled.ForeColor = Color.White;
+            lblBackupEnabled.Location = new Point(10, yPos);
+            lblBackupEnabled.AutoSize = true;
+            panelBackup.Controls.Add(lblBackupEnabled);
+
+            TGLBackupEnabled = new TrionControlPanel.UI.CustomToggleButton();
+            TGLBackupEnabled.Location = new Point(250, yPos - 3);
+            TGLBackupEnabled.MinimumSize = new Size(45, 22);
+            TGLBackupEnabled.Size = new Size(45, 22);
+            TGLBackupEnabled.CheckedChanged += TGLBackupEnabled_CheckedChanged;
+            panelBackup.Controls.Add(TGLBackupEnabled);
+
+            yPos += 40;
+
+            // Backup Interval
+            var lblInterval = new Label();
+            lblInterval.Text = "Backup Interval (days):";
+            lblInterval.ForeColor = Color.White;
+            lblInterval.Location = new Point(10, yPos);
+            lblInterval.AutoSize = true;
+            panelBackup.Controls.Add(lblInterval);
+
+            TXTBackupIntervalDays = new MetroFramework.Controls.MetroTextBox();
+            TXTBackupIntervalDays.Location = new Point(250, yPos - 3);
+            TXTBackupIntervalDays.Size = new Size(80, 25);
+            TXTBackupIntervalDays.Style = MetroFramework.MetroColorStyle.Blue;
+            TXTBackupIntervalDays.Theme = MetroFramework.MetroThemeStyle.Dark;
+            TXTBackupIntervalDays.UseStyleColors = true;
+            TXTBackupIntervalDays.Leave += TXTBackupIntervalDays_Leave;
+            panelBackup.Controls.Add(TXTBackupIntervalDays);
+
+            yPos += 40;
+
+            // Database Location
+            var lblDbLoc = new Label();
+            lblDbLoc.Text = "MySQL Data Location:";
+            lblDbLoc.ForeColor = Color.White;
+            lblDbLoc.Location = new Point(10, yPos);
+            lblDbLoc.AutoSize = true;
+            panelBackup.Controls.Add(lblDbLoc);
+
+            TXTBackupDatabaseLocation = new MetroFramework.Controls.MetroTextBox();
+            TXTBackupDatabaseLocation.Location = new Point(250, yPos - 3);
+            TXTBackupDatabaseLocation.Size = new Size(430, 25);
+            TXTBackupDatabaseLocation.Style = MetroFramework.MetroColorStyle.Blue;
+            TXTBackupDatabaseLocation.Theme = MetroFramework.MetroThemeStyle.Dark;
+            TXTBackupDatabaseLocation.UseStyleColors = true;
+            TXTBackupDatabaseLocation.ReadOnly = true;
+            panelBackup.Controls.Add(TXTBackupDatabaseLocation);
+
+            var btnBrowseDbLoc = new UI.Controls.CustomButton();
+            btnBrowseDbLoc.Text = "Browse";
+            btnBrowseDbLoc.Location = new Point(690, yPos - 5);
+            btnBrowseDbLoc.Size = new Size(80, 30);
+            btnBrowseDbLoc.BackColor = Color.FromArgb(28, 33, 40);
+            btnBrowseDbLoc.ForeColor = Color.White;
+            btnBrowseDbLoc.FlatStyle = FlatStyle.Flat;
+            btnBrowseDbLoc.FlatAppearance.BorderSize = 1;
+            btnBrowseDbLoc.Click += BTNBrowseBackupDbLocation_Click;
+            panelBackup.Controls.Add(btnBrowseDbLoc);
+
+            yPos += 40;
+
+            // Backup Folder
+            var lblBackupFolder = new Label();
+            lblBackupFolder.Text = "Backup Folder:";
+            lblBackupFolder.ForeColor = Color.White;
+            lblBackupFolder.Location = new Point(10, yPos);
+            lblBackupFolder.AutoSize = true;
+            panelBackup.Controls.Add(lblBackupFolder);
+
+            TXTBackupFolder = new MetroFramework.Controls.MetroTextBox();
+            TXTBackupFolder.Location = new Point(250, yPos - 3);
+            TXTBackupFolder.Size = new Size(430, 25);
+            TXTBackupFolder.Style = MetroFramework.MetroColorStyle.Blue;
+            TXTBackupFolder.Theme = MetroFramework.MetroThemeStyle.Dark;
+            TXTBackupFolder.UseStyleColors = true;
+            TXTBackupFolder.ReadOnly = true;
+            panelBackup.Controls.Add(TXTBackupFolder);
+
+            var btnBrowseBackup = new UI.Controls.CustomButton();
+            btnBrowseBackup.Text = "Browse";
+            btnBrowseBackup.Location = new Point(690, yPos - 5);
+            btnBrowseBackup.Size = new Size(80, 30);
+            btnBrowseBackup.BackColor = Color.FromArgb(28, 33, 40);
+            btnBrowseBackup.ForeColor = Color.White;
+            btnBrowseBackup.FlatStyle = FlatStyle.Flat;
+            btnBrowseBackup.FlatAppearance.BorderSize = 1;
+            btnBrowseBackup.Click += BTNBrowseBackupFolder_Click;
+            panelBackup.Controls.Add(btnBrowseBackup);
+
+            yPos += 40;
+
+            // Last Backup Date
+            var lblLastBackup = new Label();
+            lblLastBackup.Text = "Last Backup:";
+            lblLastBackup.ForeColor = Color.White;
+            lblLastBackup.Location = new Point(10, yPos);
+            lblLastBackup.AutoSize = true;
+            panelBackup.Controls.Add(lblLastBackup);
+
+            LBLLastBackupDate = new Label();
+            LBLLastBackupDate.Text = "Never";
+            LBLLastBackupDate.ForeColor = Color.FromArgb(0, 174, 219);
+            LBLLastBackupDate.Location = new Point(250, yPos);
+            LBLLastBackupDate.AutoSize = true;
+            panelBackup.Controls.Add(LBLLastBackupDate);
+
+            tabPageBackup.Controls.Add(panelBackup);
+            TBControler.TabPages.Add(tabPageBackup);
+        }
+        private void LoadBackupData()
+        {
+            TGLBackupEnabled.Checked = Setting.List.BackupEnabled;
+            TXTBackupIntervalDays.Text = Setting.List.BackupIntervalDays.ToString();
+            TXTBackupDatabaseLocation.Text = Setting.List.BackupDatabaseLocation ?? "N/A";
+            TXTBackupFolder.Text = Setting.List.BackupFolder ?? "N/A";
+
+            if (!string.IsNullOrEmpty(Setting.List.LastBackupDate) &&
+                DateTime.TryParse(Setting.List.LastBackupDate, out DateTime lastBackup))
+            {
+                LBLLastBackupDate.Text = lastBackup.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            else
+            {
+                LBLLastBackupDate.Text = "Never";
+            }
+        }
+        private void TGLBackupEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            Setting.List.BackupEnabled = TGLBackupEnabled.Checked;
+        }
+        private void TXTBackupIntervalDays_Leave(object sender, EventArgs e)
+        {
+            if (int.TryParse(TXTBackupIntervalDays.Text, out int days) && days > 0)
+            {
+                Setting.List.BackupIntervalDays = days;
+            }
+            else
+            {
+                TXTBackupIntervalDays.Text = Setting.List.BackupIntervalDays.ToString();
+            }
+        }
+        private async void BTNBrowseBackupDbLocation_Click(object sender, EventArgs e)
+        {
+            string folder = SettingsData.GetWorkingDirectory();
+            if (!string.IsNullOrEmpty(folder))
+            {
+                Setting.List.BackupDatabaseLocation = folder;
+                TXTBackupDatabaseLocation.Text = folder;
+                await Setting.Save();
+            }
+        }
+        private async void BTNBrowseBackupFolder_Click(object sender, EventArgs e)
+        {
+            string folder = SettingsData.GetWorkingDirectory();
+            if (!string.IsNullOrEmpty(folder))
+            {
+                Setting.List.BackupFolder = folder;
+                TXTBackupFolder.Text = folder;
+                await Setting.Save();
+            }
         }
         private void EnableCustomNames()
         {
@@ -163,6 +360,7 @@ namespace TrionControlPanelDesktop.Controls
             TGLDDNSRunOnStartup.Checked = Setting.List.DDNSRunOnStartup;
             CBoxSelectItems();
             GeteSelectedDatabase();
+            LoadBackupData();
             User.UI.Form.StartUpLoading++;
         }
         private void GeteSelectedDatabase()

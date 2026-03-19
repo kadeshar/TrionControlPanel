@@ -5,6 +5,7 @@ using System.Reflection;
 using TrionControlPanelDesktop.Controls;
 using TrionControlPanelDesktop.Controls.Notification;
 using TrionControlPanelDesktop.Data;
+using TrionLibrary.Database;
 using TrionLibrary.Network;
 using TrionLibrary.Setting;
 using TrionLibrary.Sys;
@@ -242,6 +243,52 @@ namespace TrionControlPanelDesktop
             TimerCrashDetected.Stop();
             if (!User.UI.Form.DBRunning && !User.UI.Form.DBStarted)
             {
+                if (DatabaseBackup.IsBackupDue())
+                {
+                    var backupResult = MetroMessageBox.Show(this,
+                        "It's time to backup your databases. Would you like to create a backup now?",
+                        "Database Backup",
+                        Setting.List.NotificationSound,
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information);
+
+                    if (backupResult == DialogResult.Yes)
+                    {
+                        var previousControl = CurrentControl;
+                        loadingControl.LoadingText = "Creating Backup...";
+                        PNLControl.Controls.Clear();
+                        PNLControl.Controls.Add(loadingControl);
+
+                        Infos.Message = "Creating database backup...";
+                        bool success = await DatabaseBackup.BackupDatabaseFiles(
+                            Setting.List.BackupDatabaseLocation,
+                            Setting.List.BackupFolder);
+
+                        loadingControl.LoadingText = "Loading..";
+                        CurrentControl = previousControl;
+                        ChangeControl();
+
+                        if (success)
+                        {
+                            MetroMessageBox.Show(this,
+                                "Database backup completed successfully!",
+                                "Backup Complete",
+                                Setting.List.NotificationSound,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MetroMessageBox.Show(this,
+                                "Database backup failed. Check the notification log for details.",
+                                "Backup Failed",
+                                Setting.List.NotificationSound,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        }
+                    }
+                }
+
                 User.System.DatabaseStartTime = DateTime.Now;
                 Setting.CreateMySQLConfigFile(Directory.GetCurrentDirectory());
                 string arg = $"--defaults-file=\"{Directory.GetCurrentDirectory()}/my.ini\" --console";
@@ -401,11 +448,11 @@ namespace TrionControlPanelDesktop
 
         private void BTNSupport_MouseEnter(object sender, EventArgs e)
         {
-            BTNSupport.Image = Properties.Resources.gef‰llt_mir;
+            BTNSupport.Image = Properties.Resources.gef√§llt_mir;
         }
         private void BTNSupport_MouseLeave(object sender, EventArgs e)
         {
-            BTNSupport.Image = Properties.Resources.gef‰llt_mir_50;
+            BTNSupport.Image = Properties.Resources.gef√§llt_mir_50;
         }
 
         private void BTNSupport_Click(object sender, EventArgs e)

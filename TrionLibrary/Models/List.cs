@@ -95,6 +95,12 @@ namespace TrionLibrary.Models
             public string MoPLogonName;
             public bool LaunchMoPCore;
             public bool MOPInstalled;
+            //Backup Settings
+            public bool BackupEnabled;
+            public int BackupIntervalDays;
+            public string BackupDatabaseLocation;
+            public string BackupFolder;
+            public string LastBackupDate;
             //DDNS Settings
             public string DDNSDomain;
             public string DDNSUsername;
