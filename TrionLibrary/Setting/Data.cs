@@ -58,6 +58,7 @@ namespace TrionLibrary.Setting
                 List.RunWithWindows = false;
                 List.CustomNames = false;
                 List.RunServerWithWindows = false;
+                List.DropAcoreWorldOnNextDatabaseStart = false;
                 List.AutoUpdateCore = false;
                 List.AutoUpdateTrion = true;
                 List.FirstRun = true;

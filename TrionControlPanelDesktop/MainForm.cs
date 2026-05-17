@@ -97,6 +97,37 @@ namespace TrionControlPanelDesktop
                 MetroMessageBox.Show(this, $"The port: {Result} is used! \n You need the ports to start the servers!", "Warning!", Setting.List.NotificationSound, MessageBoxButtons.OK, MessageBoxIcon.None);
             }
         }
+        private async Task HandleOneTimeWorldDatabaseDrop()
+        {
+            if (!Setting.List.DropAcoreWorldOnNextDatabaseStart)
+            {
+                return;
+            }
+
+            const string worldDatabaseName = "acore_world";
+
+            for (int attempt = 0; attempt < 10; attempt++)
+            {
+                if (await Connect.Test())
+                {
+                    try
+                    {
+                        await Access.DropDatabase(Connect.String(Setting.List.AuthDatabase), worldDatabaseName);
+                        Setting.List.DropAcoreWorldOnNextDatabaseStart = false;
+                        await Setting.Save();
+                    }
+                    catch
+                    {
+                        // Keep the flag enabled so the one-time action can retry on the next database start.
+                    }
+                    return;
+                }
+
+                await Task.Delay(1000);
+            }
+
+            Infos.Message = $"Unable to connect to MySQL to drop database '{worldDatabaseName}'.";
+        }
         private async void MainForm_LoadAsync(object sender, EventArgs e)
         {
             string version = string.Empty;
@@ -294,6 +325,7 @@ namespace TrionControlPanelDesktop
                 string arg = $"--defaults-file=\"{Directory.GetCurrentDirectory()}/my.ini\" --console";
                 await Main.StartDatabase(arg);
                 await Main.DatabaseRunIDCheck(Setting.List.DBWorkingDir, Setting.List.DBExeName);
+                await HandleOneTimeWorldDatabaseDrop();
             }
             else
             {

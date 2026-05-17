@@ -201,6 +201,31 @@ namespace TrionLibrary.Database
                 Infos.Message = $"Error deleting table '{tableName}': {ex.Message}";
             }
         }
+        public static async Task DropDatabase(string connectionString, string databaseName)
+        {
+            try
+            {
+                var connectionBuilder = new MySqlConnectionStringBuilder(connectionString)
+                {
+                    Database = string.Empty
+                };
+
+                using MySqlConnection connection = new(connectionBuilder.ConnectionString);
+                await connection.OpenAsync();
+
+                string escapedDatabaseName = databaseName.Replace("`", "``");
+                string sql = $"DROP DATABASE IF EXISTS `{escapedDatabaseName}`";
+
+                using MySqlCommand command = new(sql, connection);
+                await command.ExecuteNonQueryAsync();
+                Infos.Message = $"Database '{databaseName}' dropped successfully.";
+            }
+            catch (Exception ex)
+            {
+                Infos.Message = $"Error dropping database '{databaseName}': {ex.Message}";
+                throw;
+            }
+        }
         public static Task DumpAllTables(string connectionString, string outputFile)
         {
             Thread MachineCpuUtilizationThread = new(() =>

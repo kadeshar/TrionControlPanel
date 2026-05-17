@@ -116,10 +116,11 @@ namespace TrionLibrary.Models
             public bool StayInTray;
             public bool RunWithWindows;
             public bool CustomNames;
-            public bool RunServerWithWindows;
-            public bool FirstRun;
-            public bool DDNSRunOnStartup;
-            public bool ServerCrashDetection;
+             public bool RunServerWithWindows;
+             public bool DropAcoreWorldOnNextDatabaseStart;
+             public bool FirstRun;
+             public bool DDNSRunOnStartup;
+             public bool ServerCrashDetection;
             public int DDNSInterval;
             public Enums.Cores SelectedCore;
             public Enums.DDNSerivce DDNSerivce;
