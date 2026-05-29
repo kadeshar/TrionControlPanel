@@ -149,19 +149,8 @@
             metroPanel28 = new MetroFramework.Controls.MetroPanel();
             pictureBox13 = new PictureBox();
             label42 = new Label();
-            metroPanel5 = new MetroFramework.Controls.MetroPanel();
-            label38 = new Label();
-            label37 = new Label();
-            label36 = new Label();
-            TGLAuthBackup = new TrionControlPanel.UI.CustomToggleButton();
-            TGLCharBackup = new TrionControlPanel.UI.CustomToggleButton();
-            TGLWorldBackup = new TrionControlPanel.UI.CustomToggleButton();
-            metroPanel23 = new MetroFramework.Controls.MetroPanel();
-            pictureBox12 = new PictureBox();
-            label6 = new Label();
-            LoadBackup = new UI.Controls.CustomButton();
-            BTNDatabaseBackup = new UI.Controls.CustomButton();
-            BTNFixMysql = new UI.Controls.CustomButton();
+
+
             panel1 = new MetroFramework.Controls.MetroPanel();
             metroPanel24 = new MetroFramework.Controls.MetroPanel();
             pictureBox11 = new PictureBox();
@@ -258,9 +247,8 @@
             metroPanel27.SuspendLayout();
             metroPanel28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
-            metroPanel5.SuspendLayout();
-            metroPanel23.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
+
+
             panel1.SuspendLayout();
             metroPanel24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
@@ -2211,7 +2199,7 @@
             TabPageDatabase.AccessibleName = "";
             TabPageDatabase.BackColor = Color.FromArgb(45, 51, 59);
             TabPageDatabase.Controls.Add(metroPanel27);
-            TabPageDatabase.Controls.Add(metroPanel5);
+
             TabPageDatabase.Controls.Add(panel1);
             TabPageDatabase.Controls.Add(panel3);
             TabPageDatabase.Location = new Point(4, 34);
@@ -2247,9 +2235,9 @@
             metroPanel27.HorizontalScrollbarBarColor = true;
             metroPanel27.HorizontalScrollbarHighlightOnWheel = false;
             metroPanel27.HorizontalScrollbarSize = 10;
-            metroPanel27.Location = new Point(425, 5);
+            metroPanel27.Location = new Point(565, 5);
             metroPanel27.Name = "metroPanel27";
-            metroPanel27.Size = new Size(198, 310);
+            metroPanel27.Size = new Size(267, 310);
             metroPanel27.Style = MetroFramework.MetroColorStyle.Blue;
             metroPanel27.StyleManager = null;
             metroPanel27.TabIndex = 16;
@@ -2451,7 +2439,7 @@
             metroPanel28.Location = new Point(0, 0);
             metroPanel28.Name = "metroPanel28";
             metroPanel28.Padding = new Padding(2);
-            metroPanel28.Size = new Size(198, 30);
+            metroPanel28.Size = new Size(267, 30);
             metroPanel28.Style = MetroFramework.MetroColorStyle.Blue;
             metroPanel28.StyleManager = null;
             metroPanel28.TabIndex = 56;
@@ -2465,7 +2453,7 @@
             // 
             pictureBox13.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox13.Image = (Image)resources.GetObject("pictureBox13.Image");
-            pictureBox13.Location = new Point(172, 4);
+            pictureBox13.Location = new Point(240, 4);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(23, 23);
             pictureBox13.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -2480,254 +2468,12 @@
             label42.ForeColor = Color.FromArgb(0, 174, 219);
             label42.Location = new Point(2, 2);
             label42.Name = "label42";
-            label42.Size = new Size(194, 26);
+            label42.Size = new Size(263, 26);
             label42.TabIndex = 53;
             label42.Text = "SELECT DATABASE";
             label42.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // metroPanel5
-            // 
-            metroPanel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            metroPanel5.BackColor = Color.FromArgb(34, 39, 46);
-            metroPanel5.Border = true;
-            metroPanel5.BorderColor = Color.Black;
-            metroPanel5.BorderSize = 1;
-            metroPanel5.Controls.Add(label38);
-            metroPanel5.Controls.Add(label37);
-            metroPanel5.Controls.Add(label36);
-            metroPanel5.Controls.Add(TGLAuthBackup);
-            metroPanel5.Controls.Add(TGLCharBackup);
-            metroPanel5.Controls.Add(TGLWorldBackup);
-            metroPanel5.Controls.Add(metroPanel23);
-            metroPanel5.Controls.Add(LoadBackup);
-            metroPanel5.Controls.Add(BTNDatabaseBackup);
-            metroPanel5.Controls.Add(BTNFixMysql);
-            metroPanel5.CustomBackground = false;
-            metroPanel5.HorizontalScrollbar = false;
-            metroPanel5.HorizontalScrollbarBarColor = true;
-            metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
-            metroPanel5.HorizontalScrollbarSize = 10;
-            metroPanel5.Location = new Point(629, 5);
-            metroPanel5.Name = "metroPanel5";
-            metroPanel5.Size = new Size(203, 310);
-            metroPanel5.Style = MetroFramework.MetroColorStyle.Blue;
-            metroPanel5.StyleManager = null;
-            metroPanel5.TabIndex = 15;
-            metroPanel5.Theme = MetroFramework.MetroThemeStyle.Dark;
-            metroPanel5.VerticalScrollbar = false;
-            metroPanel5.VerticalScrollbarBarColor = true;
-            metroPanel5.VerticalScrollbarHighlightOnWheel = false;
-            metroPanel5.VerticalScrollbarSize = 10;
-            // 
-            // label38
-            // 
-            label38.AutoSize = true;
-            label38.ForeColor = Color.White;
-            label38.Location = new Point(54, 137);
-            label38.Name = "label38";
-            label38.Size = new Size(81, 15);
-            label38.TabIndex = 61;
-            label38.Text = "World Backup";
-            // 
-            // label37
-            // 
-            label37.AutoSize = true;
-            label37.ForeColor = Color.White;
-            label37.Location = new Point(54, 109);
-            label37.Name = "label37";
-            label37.Size = new Size(105, 15);
-            label37.TabIndex = 60;
-            label37.Text = "Characters Backup";
-            // 
-            // label36
-            // 
-            label36.AutoSize = true;
-            label36.ForeColor = Color.White;
-            label36.Location = new Point(54, 81);
-            label36.Name = "label36";
-            label36.Size = new Size(120, 15);
-            label36.TabIndex = 23;
-            label36.Text = "Auth / Logon Backup";
-            // 
-            // TGLAuthBackup
-            // 
-            TGLAuthBackup.AutoSize = true;
-            TGLAuthBackup.Cursor = Cursors.Hand;
-            TGLAuthBackup.Location = new Point(3, 78);
-            TGLAuthBackup.MinimumSize = new Size(45, 22);
-            TGLAuthBackup.Name = "TGLAuthBackup";
-            TGLAuthBackup.OffBackColor = Color.FromArgb(0, 174, 219);
-            TGLAuthBackup.OffToggleColor = Color.FromArgb(255, 87, 57);
-            TGLAuthBackup.OnBackColor = Color.FromArgb(0, 174, 219);
-            TGLAuthBackup.OnToggleColor = Color.FromArgb(105, 195, 59);
-            TGLAuthBackup.Size = new Size(45, 22);
-            TGLAuthBackup.SolidStyle = false;
-            TGLAuthBackup.TabIndex = 57;
-            TLTHome.SetToolTip(TGLAuthBackup, "Enable/Disable Logon backup function.");
-            TGLAuthBackup.UseVisualStyleBackColor = true;
-            // 
-            // TGLCharBackup
-            // 
-            TGLCharBackup.AutoSize = true;
-            TGLCharBackup.Cursor = Cursors.Hand;
-            TGLCharBackup.Location = new Point(3, 106);
-            TGLCharBackup.MinimumSize = new Size(45, 22);
-            TGLCharBackup.Name = "TGLCharBackup";
-            TGLCharBackup.OffBackColor = Color.FromArgb(0, 174, 219);
-            TGLCharBackup.OffToggleColor = Color.FromArgb(255, 87, 57);
-            TGLCharBackup.OnBackColor = Color.FromArgb(0, 174, 219);
-            TGLCharBackup.OnToggleColor = Color.FromArgb(105, 195, 59);
-            TGLCharBackup.Size = new Size(45, 22);
-            TGLCharBackup.SolidStyle = false;
-            TGLCharBackup.TabIndex = 58;
-            TLTHome.SetToolTip(TGLCharBackup, "Enable/Disable Characters backup function.");
-            TGLCharBackup.UseVisualStyleBackColor = true;
-            // 
-            // TGLWorldBackup
-            // 
-            TGLWorldBackup.AutoSize = true;
-            TGLWorldBackup.Cursor = Cursors.Hand;
-            TGLWorldBackup.Location = new Point(3, 134);
-            TGLWorldBackup.MinimumSize = new Size(45, 22);
-            TGLWorldBackup.Name = "TGLWorldBackup";
-            TGLWorldBackup.OffBackColor = Color.FromArgb(0, 174, 219);
-            TGLWorldBackup.OffToggleColor = Color.FromArgb(255, 87, 57);
-            TGLWorldBackup.OnBackColor = Color.FromArgb(0, 174, 219);
-            TGLWorldBackup.OnToggleColor = Color.FromArgb(105, 195, 59);
-            TGLWorldBackup.Size = new Size(45, 22);
-            TGLWorldBackup.SolidStyle = false;
-            TGLWorldBackup.TabIndex = 59;
-            TLTHome.SetToolTip(TGLWorldBackup, "Enable/Disable World backup function.");
-            TGLWorldBackup.UseVisualStyleBackColor = true;
-            // 
-            // metroPanel23
-            // 
-            metroPanel23.BackColor = Color.FromArgb(28, 33, 40);
-            metroPanel23.Border = true;
-            metroPanel23.BorderColor = Color.Black;
-            metroPanel23.BorderSize = 1;
-            metroPanel23.Controls.Add(pictureBox12);
-            metroPanel23.Controls.Add(label6);
-            metroPanel23.CustomBackground = true;
-            metroPanel23.Dock = DockStyle.Top;
-            metroPanel23.HorizontalScrollbar = true;
-            metroPanel23.HorizontalScrollbarBarColor = true;
-            metroPanel23.HorizontalScrollbarHighlightOnWheel = false;
-            metroPanel23.HorizontalScrollbarSize = 10;
-            metroPanel23.Location = new Point(0, 0);
-            metroPanel23.Name = "metroPanel23";
-            metroPanel23.Padding = new Padding(2);
-            metroPanel23.Size = new Size(203, 30);
-            metroPanel23.Style = MetroFramework.MetroColorStyle.Blue;
-            metroPanel23.StyleManager = null;
-            metroPanel23.TabIndex = 56;
-            metroPanel23.Theme = MetroFramework.MetroThemeStyle.Dark;
-            metroPanel23.VerticalScrollbar = true;
-            metroPanel23.VerticalScrollbarBarColor = true;
-            metroPanel23.VerticalScrollbarHighlightOnWheel = false;
-            metroPanel23.VerticalScrollbarSize = 10;
-            // 
-            // pictureBox12
-            // 
-            pictureBox12.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox12.Image = (Image)resources.GetObject("pictureBox12.Image");
-            pictureBox12.Location = new Point(176, 4);
-            pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(23, 23);
-            pictureBox12.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox12.TabIndex = 58;
-            pictureBox12.TabStop = false;
-            TLTHome.SetToolTip(pictureBox12, "Create/Restore backups and/or repair the Database");
-            // 
-            // label6
-            // 
-            label6.Dock = DockStyle.Fill;
-            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.FromArgb(0, 174, 219);
-            label6.Location = new Point(2, 2);
-            label6.Name = "label6";
-            label6.Size = new Size(199, 26);
-            label6.TabIndex = 53;
-            label6.Text = "DATABASE BACKUP";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // LoadBackup
-            // 
-            LoadBackup.Anchor = AnchorStyles.Right;
-            LoadBackup.BackColor = Color.FromArgb(28, 33, 40);
-            LoadBackup.BackgroundColor = Color.FromArgb(28, 33, 40);
-            LoadBackup.BorderColor = Color.FromArgb(0, 174, 219);
-            LoadBackup.BorderRadius = 0;
-            LoadBackup.BorderSize = 1;
-            LoadBackup.Cursor = Cursors.Hand;
-            LoadBackup.FlatAppearance.BorderSize = 0;
-            LoadBackup.FlatStyle = FlatStyle.Flat;
-            LoadBackup.ForeColor = Color.White;
-            LoadBackup.Image = (Image)resources.GetObject("LoadBackup.Image");
-            LoadBackup.ImageAlign = ContentAlignment.MiddleLeft;
-            LoadBackup.Location = new Point(3, 237);
-            LoadBackup.Name = "LoadBackup";
-            LoadBackup.NotificationCount = 0;
-            LoadBackup.RightToLeft = RightToLeft.No;
-            LoadBackup.Size = new Size(195, 30);
-            LoadBackup.TabIndex = 55;
-            LoadBackup.Text = "Load Backup";
-            LoadBackup.TextColor = Color.White;
-            TLTHome.SetToolTip(LoadBackup, "Restores a backup of the selected table(s)");
-            LoadBackup.UseVisualStyleBackColor = false;
-            LoadBackup.Click += LoadBackup_Click;
-            // 
-            // BTNDatabaseBackup
-            // 
-            BTNDatabaseBackup.Anchor = AnchorStyles.Right;
-            BTNDatabaseBackup.BackColor = Color.FromArgb(28, 33, 40);
-            BTNDatabaseBackup.BackgroundColor = Color.FromArgb(28, 33, 40);
-            BTNDatabaseBackup.BorderColor = Color.FromArgb(0, 174, 219);
-            BTNDatabaseBackup.BorderRadius = 0;
-            BTNDatabaseBackup.BorderSize = 1;
-            BTNDatabaseBackup.Cursor = Cursors.Hand;
-            BTNDatabaseBackup.FlatAppearance.BorderSize = 0;
-            BTNDatabaseBackup.FlatStyle = FlatStyle.Flat;
-            BTNDatabaseBackup.ForeColor = Color.White;
-            BTNDatabaseBackup.Image = (Image)resources.GetObject("BTNDatabaseBackup.Image");
-            BTNDatabaseBackup.ImageAlign = ContentAlignment.MiddleLeft;
-            BTNDatabaseBackup.Location = new Point(3, 200);
-            BTNDatabaseBackup.Name = "BTNDatabaseBackup";
-            BTNDatabaseBackup.NotificationCount = 0;
-            BTNDatabaseBackup.RightToLeft = RightToLeft.No;
-            BTNDatabaseBackup.Size = new Size(195, 30);
-            BTNDatabaseBackup.TabIndex = 54;
-            BTNDatabaseBackup.Text = "Start Backup";
-            BTNDatabaseBackup.TextColor = Color.White;
-            TLTHome.SetToolTip(BTNDatabaseBackup, "Creates a backup of the selected table(s)");
-            BTNDatabaseBackup.UseVisualStyleBackColor = false;
-            BTNDatabaseBackup.Click += BTNDatabaseBackup_Click;
-            // 
-            // BTNFixMysql
-            // 
-            BTNFixMysql.Anchor = AnchorStyles.Right;
-            BTNFixMysql.BackColor = Color.FromArgb(28, 33, 40);
-            BTNFixMysql.BackgroundColor = Color.FromArgb(28, 33, 40);
-            BTNFixMysql.BorderColor = Color.FromArgb(0, 174, 219);
-            BTNFixMysql.BorderRadius = 0;
-            BTNFixMysql.BorderSize = 1;
-            BTNFixMysql.Cursor = Cursors.Hand;
-            BTNFixMysql.FlatAppearance.BorderSize = 0;
-            BTNFixMysql.FlatStyle = FlatStyle.Flat;
-            BTNFixMysql.ForeColor = Color.White;
-            BTNFixMysql.Image = (Image)resources.GetObject("BTNFixMysql.Image");
-            BTNFixMysql.ImageAlign = ContentAlignment.MiddleLeft;
-            BTNFixMysql.Location = new Point(3, 273);
-            BTNFixMysql.Name = "BTNFixMysql";
-            BTNFixMysql.NotificationCount = 0;
-            BTNFixMysql.RightToLeft = RightToLeft.No;
-            BTNFixMysql.Size = new Size(195, 30);
-            BTNFixMysql.TabIndex = 48;
-            BTNFixMysql.Text = "Fix MySQL";
-            BTNFixMysql.TextColor = Color.White;
-            TLTHome.SetToolTip(BTNFixMysql, "Repairs the MySQL/Database server");
-            BTNFixMysql.UseVisualStyleBackColor = false;
-            BTNFixMysql.Click += BTNFixMysql_Click;
+
+
             // 
             // panel1
             // 
@@ -2751,9 +2497,9 @@
             panel1.HorizontalScrollbarBarColor = true;
             panel1.HorizontalScrollbarHighlightOnWheel = false;
             panel1.HorizontalScrollbarSize = 10;
-            panel1.Location = new Point(220, 5);
+            panel1.Location = new Point(289, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(199, 310);
+            panel1.Size = new Size(271, 310);
             panel1.Style = MetroFramework.MetroColorStyle.Blue;
             panel1.StyleManager = null;
             panel1.TabIndex = 14;
@@ -2780,7 +2526,7 @@
             metroPanel24.Location = new Point(0, 0);
             metroPanel24.Name = "metroPanel24";
             metroPanel24.Padding = new Padding(2);
-            metroPanel24.Size = new Size(199, 30);
+            metroPanel24.Size = new Size(271, 30);
             metroPanel24.Style = MetroFramework.MetroColorStyle.Blue;
             metroPanel24.StyleManager = null;
             metroPanel24.TabIndex = 57;
@@ -2794,7 +2540,7 @@
             // 
             pictureBox11.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
-            pictureBox11.Location = new Point(173, 4);
+            pictureBox11.Location = new Point(244, 4);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(23, 23);
             pictureBox11.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -2809,7 +2555,7 @@
             label4.ForeColor = Color.FromArgb(0, 174, 219);
             label4.Location = new Point(2, 2);
             label4.Name = "label4";
-            label4.Size = new Size(195, 26);
+            label4.Size = new Size(267, 26);
             label4.TabIndex = 52;
             label4.Text = "DATABASE DETAILS";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -3014,7 +2760,7 @@
             panel3.HorizontalScrollbarSize = 10;
             panel3.Location = new Point(5, 5);
             panel3.Name = "panel3";
-            panel3.Size = new Size(209, 310);
+            panel3.Size = new Size(279, 310);
             panel3.Style = MetroFramework.MetroColorStyle.Blue;
             panel3.StyleManager = null;
             panel3.TabIndex = 13;
@@ -3041,7 +2787,7 @@
             metroPanel25.Location = new Point(0, 0);
             metroPanel25.Name = "metroPanel25";
             metroPanel25.Padding = new Padding(2);
-            metroPanel25.Size = new Size(209, 30);
+            metroPanel25.Size = new Size(279, 30);
             metroPanel25.Style = MetroFramework.MetroColorStyle.Blue;
             metroPanel25.StyleManager = null;
             metroPanel25.TabIndex = 57;
@@ -3055,7 +2801,7 @@
             // 
             pictureBox10.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(183, 4);
+            pictureBox10.Location = new Point(252, 4);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(23, 23);
             pictureBox10.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -3070,7 +2816,7 @@
             label5.ForeColor = Color.FromArgb(0, 174, 219);
             label5.Location = new Point(2, 2);
             label5.Name = "label5";
-            label5.Size = new Size(205, 26);
+            label5.Size = new Size(275, 26);
             label5.TabIndex = 51;
             label5.Text = "CONNECTION DETAILS";
             label5.TextAlign = ContentAlignment.MiddleLeft;
@@ -3930,10 +3676,8 @@
             metroPanel27.PerformLayout();
             metroPanel28.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
-            metroPanel5.ResumeLayout(false);
-            metroPanel5.PerformLayout();
-            metroPanel23.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
+
+
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             metroPanel24.ResumeLayout(false);
@@ -4058,13 +3802,8 @@
         private Label LBLTBCVersion;
         private Label LBLClassicVersion;
         private TabPage TabPageDatabase;
-        private MetroFramework.Controls.MetroPanel metroPanel5;
-        private MetroFramework.Controls.MetroPanel metroPanel23;
-        private PictureBox pictureBox12;
-        private Label label6;
-        private UI.Controls.CustomButton LoadBackup;
-        private UI.Controls.CustomButton BTNDatabaseBackup;
-        private UI.Controls.CustomButton BTNFixMysql;
+
+
         private MetroFramework.Controls.MetroPanel panel1;
         private MetroFramework.Controls.MetroPanel metroPanel24;
         private PictureBox pictureBox11;
@@ -4127,9 +3866,8 @@
         private MetroFramework.Controls.MetroTextBox TXTBoxMySQLLocation;
         private MetroFramework.Controls.MetroTextBox TXTBoxCoreLocation;
         private MetroFramework.Controls.MetroTabControl TBControler;
-        private TrionControlPanel.UI.CustomToggleButton TGLAuthBackup;
-        private TrionControlPanel.UI.CustomToggleButton TGLCharBackup;
-        private TrionControlPanel.UI.CustomToggleButton TGLWorldBackup;
+
+
         private MetroFramework.Controls.MetroPanel metroPanel27;
         private Label label45;
         private Label label44;
@@ -4146,8 +3884,5 @@
         private MetroFramework.Controls.MetroPanel metroPanel28;
         private PictureBox pictureBox13;
         private Label label42;
-        private Label label38;
-        private Label label37;
-        private Label label36;
     }
 }

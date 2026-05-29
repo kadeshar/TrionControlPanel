@@ -380,6 +380,64 @@ namespace TrionControlPanelDesktop
                 ChangeControl();
             }
         }
+        public async Task BackupNow()
+        {
+            if (User.UI.Form.DBRunning)
+            {
+                MetroMessageBox.Show(this,
+                    "Cannot backup while the database is running. Stop MySQL first.",
+                    "Backup Failed",
+                    Setting.List.NotificationSound,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(Setting.List.BackupDatabaseLocation) || Setting.List.BackupDatabaseLocation == "N/A" ||
+                string.IsNullOrEmpty(Setting.List.BackupFolder) || Setting.List.BackupFolder == "N/A")
+            {
+                MetroMessageBox.Show(this,
+                    "Backup locations not configured. Set MySQL Data Location and Backup Folder first.",
+                    "Backup Failed",
+                    Setting.List.NotificationSound,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            var previousControl = CurrentControl;
+            loadingControl.LoadingText = "Creating Backup...";
+            PNLControl.Controls.Clear();
+            PNLControl.Controls.Add(loadingControl);
+
+            Infos.Message = "Creating database backup...";
+            bool success = await DatabaseBackup.BackupDatabaseFiles(
+                Setting.List.BackupDatabaseLocation,
+                Setting.List.BackupFolder);
+
+            loadingControl.LoadingText = "Loading..";
+            CurrentControl = previousControl;
+            ChangeControl();
+
+            if (success)
+            {
+                MetroMessageBox.Show(this,
+                    "Database backup completed successfully!",
+                    "Backup Complete",
+                    Setting.List.NotificationSound,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                MetroMessageBox.Show(this,
+                    "Database backup failed. Check the notification log for details.",
+                    "Backup Failed",
+                    Setting.List.NotificationSound,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
         public void ChangeControl()
         {
             switch (CurrentControl)

@@ -7,7 +7,6 @@ using TrionLibrary.Sys;
 using TrionLibrary.Database;
 using TrionLibrary.Network;
 using TrionControlPanelDesktop.Settings;
-
 namespace TrionControlPanelDesktop.Controls
 {
     public partial class SettingsControl : UserControl
@@ -28,6 +27,7 @@ namespace TrionControlPanelDesktop.Controls
         private MetroFramework.Controls.MetroTextBox TXTBackupFolder;
         private MetroFramework.Controls.MetroTextBox TXTBackupRetentionCount;
         private Label LBLLastBackupDate;
+        private UI.Controls.CustomButton BTNBackupNow;
         private void InitializeBackupTab()
         {
             var tabPageBackup = new TabPage();
@@ -182,6 +182,20 @@ namespace TrionControlPanelDesktop.Controls
             LBLLastBackupDate.AutoSize = true;
             panelBackup.Controls.Add(LBLLastBackupDate);
 
+            yPos += 40;
+
+            // Backup Now button
+            BTNBackupNow = new UI.Controls.CustomButton();
+            BTNBackupNow.Text = "Backup Now";
+            BTNBackupNow.Location = new Point(250, yPos - 5);
+            BTNBackupNow.Size = new Size(120, 30);
+            BTNBackupNow.BackColor = Color.FromArgb(28, 33, 40);
+            BTNBackupNow.ForeColor = Color.White;
+            BTNBackupNow.FlatStyle = FlatStyle.Flat;
+            BTNBackupNow.FlatAppearance.BorderSize = 1;
+            BTNBackupNow.Click += BTNBackupNow_Click;
+            panelBackup.Controls.Add(BTNBackupNow);
+
             tabPageBackup.Controls.Add(panelBackup);
             TBControler.TabPages.Add(tabPageBackup);
         }
@@ -238,6 +252,15 @@ namespace TrionControlPanelDesktop.Controls
                 Setting.List.BackupDatabaseLocation = folder;
                 TXTBackupDatabaseLocation.Text = folder;
                 await Setting.Save();
+            }
+        }
+        private async void BTNBackupNow_Click(object sender, EventArgs e)
+        {
+            var mainForm = this.FindForm() as TrionControlPanelDesktop.MainForm;
+            if (mainForm != null)
+            {
+                await mainForm.BackupNow();
+                LoadBackupData();
             }
         }
         private async void BTNBrowseBackupFolder_Click(object sender, EventArgs e)
@@ -1255,75 +1278,7 @@ namespace TrionControlPanelDesktop.Controls
             await StartInstall(Links.Install.Database, $"{Links.MainCDNHost}{Links.Hashe.Database}", true);
         }
 
-        private async void BTNDatabaseBackup_Click(object sender, EventArgs e)
-        {
-            string BackupDirectory = $"{Directory.GetCurrentDirectory()}/backup";
-            if (!Directory.Exists(BackupDirectory)) { Directory.CreateDirectory(BackupDirectory); }
-            if (TGLAuthBackup.Checked == true)
-            {
-                await Task.Run(() => Access.BackupDatabase(Connect.String(Setting.List.AuthDatabase), $"{BackupDirectory}/AuthBackup.sql"));
-            }
-            if (TGLCharBackup.Checked == true)
-            {
-                await Task.Run(() => Access.BackupDatabase(Connect.String(Setting.List.CharactersDatabase), $"{BackupDirectory}/CharBackup.sql"));
-            }
-            if (TGLWorldBackup.Checked == true)
-            {
-                await Task.Run(() => Access.BackupDatabase(Connect.String(Setting.List.WorldDatabase), $"{BackupDirectory}/WorldBackup.sql"));
-            }
-        }
 
-        private async void BTNFixMysql_Click(object sender, EventArgs e)
-        {
-            string Database = Links.Install.Database.Replace("/", @"\");
-            Directory.Delete(@$"{Database}\data", true);
-            string SQLLocation = $@"{Database}\extra\initDatabase.sql";
-            await Watcher.ApplicationStart(Setting.List.DBExeLoc, Setting.List.DBWorkingDir, "Initialize MySQL", false, $"--initialize-insecure --init-file=\"{SQLLocation}\" --console");
-        }
-
-        private async void LoadBackup_Click(object sender, EventArgs e)
-        {
-            LoadBackup.Enabled = false;
-            string BackupDirectory = $"{Directory.GetCurrentDirectory()}/backup";
-            if (!Directory.Exists(BackupDirectory)) { Directory.CreateDirectory(BackupDirectory); }
-            if (TGLAuthBackup.Checked == true)
-            {
-                string file = $"{BackupDirectory}/AuthBackup.sql";
-                if (File.Exists(file))
-                {
-                    await Task.Run(() => Access.RestoreDatabase(Connect.String(Setting.List.AuthDatabase), file));
-                }
-                else
-                {
-                    Infos.Message = "Auth backup file does not exists!";
-                }
-            }
-            if (TGLCharBackup.Checked == true)
-            {
-                string file = $"{BackupDirectory}/CharBackup.sql";
-                if (File.Exists(file))
-                {
-                    await Task.Run(() => Access.RestoreDatabase(Connect.String(Setting.List.CharactersDatabase), file));
-                }
-                else
-                {
-                    Infos.Message = "Char backup file does not exists!";
-                }
-            }
-            if (TGLWorldBackup.Checked == true)
-            {
-                string file = $"{BackupDirectory}/WorldBackup.sql";
-                if (File.Exists(file))
-                {
-                    await Task.Run(() => Access.RestoreDatabase(Connect.String(Setting.List.WorldDatabase), file));
-                }
-                else
-                {
-                    Infos.Message = "World backup file does not exists!";
-                }
-            }
-            LoadBackup.Enabled = true;
-        }
 
         private void BTNAscEmuWebsite_Click(object sender, EventArgs e)
         {
