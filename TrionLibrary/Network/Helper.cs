@@ -121,7 +121,7 @@ namespace TrionLibrary.Network
             {
                 using (HttpClient client = new())
                 {
-                    HttpResponseMessage response = await client.GetAsync("https://flying-phoenix.dev/api/getip.php");
+                    HttpResponseMessage response = await client.GetAsync("https://api.ipify.org?format=json");
                     if (response.IsSuccessStatusCode)
                     {
                         string responseBody = await response.Content.ReadAsStringAsync();
